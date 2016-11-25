@@ -546,10 +546,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}<h2 id="Shallow-network"><a href="#Shallow-network" class="headerlink" title="Shallow network"></a>Shallow network</h2></li>
-</ul>
-<h2 id="Compressing-pre-trained-deep-network"><a href="#Compressing-pre-trained-deep-network" class="headerlink" title="Compressing pre-trained deep network"></a>Compressing pre-trained deep network</h2><h2 id="Designing-compact-layers"><a href="#Designing-compact-layers" class="headerlink" title="Designing compact layers"></a>Designing compact layers</h2><h2 id="Quantizing-parameters"><a href="#Quantizing-parameters" class="headerlink" title="Quantizing parameters"></a>Quantizing parameters</h2><h2 id="Network-binarization"><a href="#Network-binarization" class="headerlink" title="Network binarization"></a>Network binarization</h2>
+            <h2 id="Shallow-network"><a href="#Shallow-network" class="headerlink" title="Shallow network"></a>Shallow network</h2><h2 id="Compressing-pre-trained-deep-network"><a href="#Compressing-pre-trained-deep-network" class="headerlink" title="Compressing pre-trained deep network"></a>Compressing pre-trained deep network</h2><h2 id="Designing-compact-layers"><a href="#Designing-compact-layers" class="headerlink" title="Designing compact layers"></a>Designing compact layers</h2><h2 id="Quantizing-parameters"><a href="#Quantizing-parameters" class="headerlink" title="Quantizing parameters"></a>Quantizing parameters</h2><h2 id="Network-binarization"><a href="#Network-binarization" class="headerlink" title="Network binarization"></a>Network binarization</h2>
           
         
       
@@ -692,10 +689,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h1 id="超分辨率重建简介"><a href="#超分辨率重建简介" class="headerlink" title="超分辨率重建简介"></a>超分辨率重建简介</h1><h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h2><hr>
+            <h1 id="超分辨率重建简介"><a href="#超分辨率重建简介" class="headerlink" title="超分辨率重建简介"></a>超分辨率重建简介</h1><h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h2><hr>
 <p>图像超分辨率重建技术就是利用一组低质量、低分辨率图像(或运动序列)来产生单幅高质量、高分辨率图像。图像超分辨率重建应用领域及其宽广，在军事，医学，公共安全，计算机视觉等方面都存在着重要的应用前景。在计算机视觉领域，图像超分辨率重建技术有可能使图像实现从检出水平(<strong>detection level</strong>)向识别水平(<strong>recognition level</strong>)的转化，或更进一步实现向细辨水平(<strong>identification level</strong>)的转化。图像超分辨率重建技术可以提高图像的识别能力和识别精度。图像超分辨率重建技术可以实现目标物的专注分析，从而可以获取感兴趣区域更高空间分辨率的图像，而不必直接采用数据量巨大的高空间分辨率图像的配置。</p>
 <p>目前超分辨率技术主要有以下两大类：<strong>基于重建的方法</strong>、 <strong>基于学习的方法</strong></p>
 <hr>
@@ -887,10 +881,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<ol>
+            <ol>
 <li><p><strong>批量递归重命名文件后缀名</strong>：</p>
 <figure class="highlight sqf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">find</span> . -maxdepth <span class="number">2</span> -<span class="built_in">name</span> <span class="string">"*.jpg"</span> | rename <span class="string">"s/.jpg/.jpeg/"</span></div></pre></td></tr></table></figure>
 </li>
@@ -1063,10 +1054,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="Finetune问题"><a href="#Finetune问题" class="headerlink" title="Finetune问题"></a>Finetune问题</h2><hr>
+            <h2 id="Finetune问题"><a href="#Finetune问题" class="headerlink" title="Finetune问题"></a>Finetune问题</h2><hr>
 <p>大家好，一直很困惑caffe在做fine-tuning时，有两个问题：</p>
 <ol>
 <li>如果将imagenet训练得到的网络最后的softmax层的输出由1000改为20，那么用自己的数据进行训练后，之前net中的卷积层，全连接层的参数是否会发生更新？</li>
@@ -1237,10 +1225,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h3 id="0-测试方法"><a href="#0-测试方法" class="headerlink" title="0. 测试方法"></a>0. 测试方法</h3><pre><code>0.1 **PLDA** ：通过SDK提取不同CNNs（Caffenet、Googlenet）网络指定层输出作为特征，然后用plda对特征进行训练、分类。统计结果以**单字识别率**为指标。
+            <h3 id="0-测试方法"><a href="#0-测试方法" class="headerlink" title="0. 测试方法"></a>0. 测试方法</h3><pre><code>0.1 **PLDA** ：通过SDK提取不同CNNs（Caffenet、Googlenet）网络指定层输出作为特征，然后用plda对特征进行训练、分类。统计结果以**单字识别率**为指标。
 0.2 **SSL**(structure Sparse Learning): 基于Alexnet训练得到的模型，基于上述模型SSL的模型，基于SSL模型finetune得到的调整模型
 </code></pre><h3 id="1-模型选用"><a href="#1-模型选用" class="headerlink" title="1. 模型选用"></a>1. 模型选用</h3><pre><code>1.1 Caffenet(conv5_bn) + PLDA
 1.2 Alexnet
@@ -1439,10 +1424,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>How many lives do we live?</p>
+            <p>How many lives do we live?</p>
 <p>How many times do we die?</p>
 <p>They say we lose 21grams at the exact moment of our death.</p>
 <p>Everyone.</p>
@@ -1597,10 +1579,7 @@
       
         
           
-            <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<p>How many lives do we live?</p>
+            <p>How many lives do we live?</p>
 <p>How many times do we die?</p>
 <p>They say we lose 21grams at the exact moment of our death.</p>
 <p>Everyone.</p>
