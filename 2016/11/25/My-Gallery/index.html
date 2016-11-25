@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="caffe,finetune," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="Finetune问题
-大家好，一直很困惑caffe在做fine-tuning时，有两个问题：">
+<meta name="description" content="photo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="对于finetune的理解">
-<meta property="og:url" content="https://github.com/silverlining21/silverlining21.github.io/2016/11/23/2016-11-23-对于Finetune的理解/index.html">
+<meta property="og:title" content="My Gallery">
+<meta property="og:url" content="https://github.com/silverlining21/silverlining21.github.io/2016/11/25/My-Gallery/index.html">
 <meta property="og:site_name" content="silver lining's blog">
-<meta property="og:description" content="Finetune问题
-大家好，一直很困惑caffe在做fine-tuning时，有两个问题：">
-<meta property="og:updated_time" content="2016-11-25T07:35:50.986Z">
+<meta property="og:description" content="photo">
+<meta property="og:updated_time" content="2016-11-25T08:19:05.458Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="对于finetune的理解">
-<meta name="twitter:description" content="Finetune问题
-大家好，一直很困惑caffe在做fine-tuning时，有两个问题：">
+<meta name="twitter:title" content="My Gallery">
+<meta name="twitter:description" content="photo">
 
 
 
@@ -124,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/silverlining21/silverlining21.github.io/2016/11/23/2016-11-23-对于Finetune的理解/"/>
+  <link rel="canonical" href="https://github.com/silverlining21/silverlining21.github.io/2016/11/25/My-Gallery/"/>
 
 
 
 
 
-  <title> 对于finetune的理解 | silver lining's blog </title>
+  <title> My Gallery | silver lining's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -299,7 +296,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/silverlining21/silverlining21.github.io/2016/11/23/2016-11-23-对于Finetune的理解/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/silverlining21/silverlining21.github.io/2016/11/25/My-Gallery/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="silver lining">
@@ -323,7 +320,7 @@
             
             
               
-                对于finetune的理解
+                My Gallery
               
             
           </h1>
@@ -336,8 +333,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-23T20:58:53+08:00">
-                2016-11-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-25T16:18:18+08:00">
+                2016-11-25
               </time>
             
 
@@ -347,31 +344,13 @@
           </span>
 
           
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Technical-Report/" itemprop="url" rel="index">
-                    <span itemprop="name">Technical Report</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/11/23/2016-11-23-对于Finetune的理解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/23/2016-11-23-对于Finetune的理解/" itemprop="commentCount"></span>
+                <a href="/2016/11/25/My-Gallery/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/25/My-Gallery/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -381,7 +360,7 @@
 
           
           
-             <span id="/2016/11/23/2016-11-23-对于Finetune的理解/" class="leancloud_visitors" data-flag-title="对于finetune的理解">
+             <span id="/2016/11/25/My-Gallery/" class="leancloud_visitors" data-flag-title="My Gallery">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -406,34 +385,7 @@
       
 
       
-        <h2 id="Finetune问题"><a href="#Finetune问题" class="headerlink" title="Finetune问题"></a>Finetune问题</h2><hr>
-<p>大家好，一直很困惑caffe在做fine-tuning时，有两个问题：<br><a id="more"></a></p>
-<ol>
-<li>如果将imagenet训练得到的网络最后的softmax层的输出由1000改为20，那么用自己的数据进行训练后，之前net中的卷积层，全连接层的参数是否会发生更新？</li>
-<li>假设fine-tune时网络参数发生变化，我不想让某些特定层的参数在fine-tuning的时候发生变化，是否可以将这些层的学习率置0？</li>
-</ol>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">作者：朱坚升</div><div class="line">链接：http:<span class="regexp">//</span>www.zhihu.com<span class="regexp">/question/</span><span class="number">35754716</span><span class="regexp">/answer/</span><span class="number">66561128</span></div><div class="line">来源：知乎</div><div class="line">著作权归作者所有，转载请联系作者获得授权。</div></pre></td></tr></table></figure>
-<h2 id="解释Finetune过程"><a href="#解释Finetune过程" class="headerlink" title="解释Finetune过程"></a>解释Finetune过程</h2><hr>
-<ol>
-<li>会更新，finetune的过程相当于继续训练，跟直接训练的区别是初始化的时候：<ul>
-<li>直接训练是按照网络定义指定的方式初始化（如高斯随机初始化）</li>
-<li>finetune是用你已经有的参数文件来初始化（就是之前训练好的caffemodel）</li>
-</ul>
-</li>
-<li><p>这个问题有两种情况：比如有4个全连接层A-&gt;B-&gt;C-&gt;D</p>
-<ul>
-<li><p>你希望C层的参数不会改变，C前面的AB层的参数也不会改变，这种情况也就是D层的梯度不往前反向传播到D层的输入blob（也就是C层的输出blob 没有得到梯度），你可以通过设置D层的propagate_down为false来做到。<br>propagate_down的数量与输入blob的数量相同，假如你某个层有2个输入blob，那么你应该在该layer的Param里面写上两行：</p>
-<figure class="highlight tap"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">propagate_down :<span class="number"> 0 </span><span class="comment"># 第1个输入blob不会得到反向传播的梯度</span></div><div class="line">propagate_down :<span class="number"> 0 </span><span class="comment"># 第2个输入blob不会得到反向传播的梯度</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<p>这样的话，你这个layer的梯度就不会反向传播啦，前面的所有layer的参数也就不会改变了</p>
-<ul>
-<li><p>你希望C层的参数不会改变，但是C前面的AB层的参数会改变，这种情况，只是固定了C层的参数，C层得到的梯度依然会反向传播给前面的B层。只需要将对应的参数blob的学习率调整为0：<br>你在layer里面加上param { lr_mult: 0 }就可以了，比如全连接层里面：</p>
- <figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class">layer </span>&#123;</div><div class="line"><span class="symbol">type:</span> <span class="string">"InnerProduct"</span></div><div class="line"><span class="class">param </span>&#123; <span class="meta"># 对应第1个参数blob的配置，也就是全连接层的参数矩阵的配置</span></div><div class="line"><span class="symbol">lr_mult:</span> <span class="number">0</span> <span class="meta"># 学习率为0，其他参数可以看caffe.proto里面的ParamSpec这个类型</span></div><div class="line">&#125;</div><div class="line"><span class="class">param </span>&#123; <span class="meta"># 对应第2个参数blob的配置，也就是全连接层的偏置项的配置</span></div><div class="line"><span class="symbol">lr_mult:</span> <span class="number">0</span> <span class="meta"># 学习率为0</span></div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
+        <p>photo</p>
 
       
     </div>
@@ -455,21 +407,13 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/caffe/" rel="tag"># caffe</a>
-          
-            <a href="/tags/finetune/" rel="tag"># finetune</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/12/2016-10-13-OCR更换测试数据测试报告/" rel="next" title="OCR更换56947数据集测试报告">
-                <i class="fa fa-chevron-left"></i> OCR更换56947数据集测试报告
+              <a href="/2016/11/25/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -477,10 +421,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/23/2016-11-23-Linux常用命令批量操作/" rel="prev" title="Linux文件批量操作">
-                Linux文件批量操作 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -506,8 +446,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/23/2016-11-23-对于Finetune的理解/"
-           data-title="对于finetune的理解" data-url="https://github.com/silverlining21/silverlining21.github.io/2016/11/23/2016-11-23-对于Finetune的理解/">
+      <div class="ds-thread" data-thread-key="2016/11/25/My-Gallery/"
+           data-title="My Gallery" data-url="https://github.com/silverlining21/silverlining21.github.io/2016/11/25/My-Gallery/">
       </div>
     
   </div>
@@ -531,17 +471,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/freud.jpg"
@@ -640,22 +571,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Finetune问题"><span class="nav-number">1.</span> <span class="nav-text">Finetune问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解释Finetune过程"><span class="nav-number">2.</span> <span class="nav-text">解释Finetune过程</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
