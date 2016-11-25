@@ -85,27 +85,18 @@
 
 
 <meta name="description" content="Finetune问题
-大家好，一直很困惑caffe在做fine-tuning时，有两个问题：
-
-如果将imagenet训练得到的网络最后的softmax层的输出由1000改为20，那么用自己的数据进行训练后，之前net中的卷积层，全连接层的参数是否会发生更新？
-假设fine-tune时网络参数发生变化，我不想让某些特定层的参数在fine-tuning的时候发生变化，是否可以将这些层的学习率置0？">
+大家好，一直很困惑caffe在做fine-tuning时，有两个问题：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="对于finetune的理解">
 <meta property="og:url" content="https://github.com/silverlining21/silverlining21.github.io/2016/11/23/2016-11-23-对于Finetune的理解/index.html">
 <meta property="og:site_name" content="silver lining's blog">
 <meta property="og:description" content="Finetune问题
-大家好，一直很困惑caffe在做fine-tuning时，有两个问题：
-
-如果将imagenet训练得到的网络最后的softmax层的输出由1000改为20，那么用自己的数据进行训练后，之前net中的卷积层，全连接层的参数是否会发生更新？
-假设fine-tune时网络参数发生变化，我不想让某些特定层的参数在fine-tuning的时候发生变化，是否可以将这些层的学习率置0？">
-<meta property="og:updated_time" content="2016-11-25T05:34:16.116Z">
+大家好，一直很困惑caffe在做fine-tuning时，有两个问题：">
+<meta property="og:updated_time" content="2016-11-25T07:35:50.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对于finetune的理解">
 <meta name="twitter:description" content="Finetune问题
-大家好，一直很困惑caffe在做fine-tuning时，有两个问题：
-
-如果将imagenet训练得到的网络最后的softmax层的输出由1000改为20，那么用自己的数据进行训练后，之前net中的卷积层，全连接层的参数是否会发生更新？
-假设fine-tune时网络参数发生变化，我不想让某些特定层的参数在fine-tuning的时候发生变化，是否可以将这些层的学习率置0？">
+大家好，一直很困惑caffe在做fine-tuning时，有两个问题：">
 
 
 
@@ -416,7 +407,7 @@
 
       
         <h2 id="Finetune问题"><a href="#Finetune问题" class="headerlink" title="Finetune问题"></a>Finetune问题</h2><hr>
-<p>大家好，一直很困惑caffe在做fine-tuning时，有两个问题：</p>
+<p>大家好，一直很困惑caffe在做fine-tuning时，有两个问题：<br><a id="more"></a></p>
 <ol>
 <li>如果将imagenet训练得到的网络最后的softmax层的输出由1000改为20，那么用自己的数据进行训练后，之前net中的卷积层，全连接层的参数是否会发生更新？</li>
 <li>假设fine-tune时网络参数发生变化，我不想让某些特定层的参数在fine-tuning的时候发生变化，是否可以将这些层的学习率置0？</li>

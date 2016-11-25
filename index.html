@@ -704,10 +704,8 @@
 
       
         
-          
-          超分辨率重建简介1. 引言
-图像超分辨率重建技术就是利用一组低质量、低分辨率图像(或运动序列)来产生单幅高质量、高分辨率图像。图像超分辨率重建应用领域及其宽广，在军事，医学，公共安全，计算机视觉等方面都存在着重要的应用前景。在计算机视觉领域，图像超分辨率重建技术有可能使图像实现从检出水平(detec
-          ...
+          <h1 id="超分辨率重建简介"><a href="#超分辨率重建简介" class="headerlink" title="超分辨率重建简介"></a>超分辨率重建简介</h1><h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h2><hr>
+<p>图像超分辨率重建技术就是利用一组低质量、低分辨率图像(或运动序列)来产生单幅高质量、高分辨率图像。图像超分辨率重建应用领域及其宽广，在军事，医学，公共安全，计算机视觉等方面都存在着重要的应用前景。在计算机视觉领域，图像超分辨率重建技术有可能使图像实现从检出水平(<strong>detection level</strong>)向识别水平(<strong>recognition level</strong>)的转化，或更进一步实现向细辨水平(<strong>identification level</strong>)的转化。图像超分辨率重建技术可以提高图像的识别能力和识别精度。图像超分辨率重建技术可以实现目标物的专注分析，从而可以获取感兴趣区域更高空间分辨率的图像，而不必直接采用数据量巨大的高空间分辨率图像的配置。<br>
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/11/23/2016-11-23-超分重建简介/#more" rel="contents">
@@ -862,16 +860,10 @@
 
       
         
-          
-          
-批量递归重命名文件后缀名：
-1find . -maxdepth 2 -name "*.jpg" | rename "s/.jpg/.jpeg/"
-
-批量压缩子文件夹：
-
-
-1234567#!/bin/bash#run under the root dirdirList=`ls -p $1 |gre
-          ...
+          <ol>
+<li><strong>批量递归重命名文件后缀名</strong>：<figure class="highlight sqf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">find</span> . -maxdepth <span class="number">2</span> -<span class="built_in">name</span> <span class="string">"*.jpg"</span> | rename <span class="string">"s/.jpg/.jpeg/"</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/11/23/2016-11-23-Linux常用命令批量操作/#more" rel="contents">
@@ -1026,13 +1018,8 @@
 
       
         
-          
-          Finetune问题
-大家好，一直很困惑caffe在做fine-tuning时，有两个问题：
-
-如果将imagenet训练得到的网络最后的softmax层的输出由1000改为20，那么用自己的数据进行训练后，之前net中的卷积层，全连接层的参数是否会发生更新？
-假设fine-tune时网络参数发生变
-          ...
+          <h2 id="Finetune问题"><a href="#Finetune问题" class="headerlink" title="Finetune问题"></a>Finetune问题</h2><hr>
+<p>大家好，一直很困惑caffe在做fine-tuning时，有两个问题：<br>
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/11/23/2016-11-23-对于Finetune的理解/#more" rel="contents">
@@ -1187,10 +1174,9 @@
 
       
         
-          
-          0. 测试方法0.1 **PLDA** ：通过SDK提取不同CNNs（Caffenet、Googlenet）网络指定层输出作为特征，然后用plda对特征进行训练、分类。统计结果以**单字识别率**为指标。
-0.2 **SSL**(structure Sparse Learning): 基于Alexn
-          ...
+          <h3 id="0-测试方法"><a href="#0-测试方法" class="headerlink" title="0. 测试方法"></a>0. 测试方法</h3><pre><code>0.1 **PLDA** ：通过SDK提取不同CNNs（Caffenet、Googlenet）网络指定层输出作为特征，然后用plda对特征进行训练、分类。统计结果以**单字识别率**为指标。
+0.2 **SSL**(structure Sparse Learning): 基于Alexnet训练得到的模型，基于上述模型SSL的模型，基于SSL模型finetune得到的调整模型
+</code></pre>
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/10/12/2016-10-13-OCR更换测试数据测试报告/#more" rel="contents">

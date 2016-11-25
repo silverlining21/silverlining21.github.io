@@ -84,34 +84,16 @@
 
 
 
-<meta name="description" content="批量递归重命名文件后缀名：
-1find . -maxdepth 2 -name &quot;*.jpg&quot; | rename &quot;s/.jpg/.jpeg/&quot;
-
-批量压缩子文件夹：
-
-
-1234567#!/bin/bash#run under the root dirdirList=`ls -p $1 |grep / |tr -d /`for dir in $dirListdo	tar -czvf $dir.">
+<meta name="description" content="批量递归重命名文件后缀名：1find . -maxdepth 2 -name &quot;*.jpg&quot; | rename &quot;s/.jpg/.jpeg/&quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux文件批量操作">
 <meta property="og:url" content="https://github.com/silverlining21/silverlining21.github.io/2016/11/23/2016-11-23-Linux常用命令批量操作/index.html">
 <meta property="og:site_name" content="silver lining's blog">
-<meta property="og:description" content="批量递归重命名文件后缀名：
-1find . -maxdepth 2 -name &quot;*.jpg&quot; | rename &quot;s/.jpg/.jpeg/&quot;
-
-批量压缩子文件夹：
-
-
-1234567#!/bin/bash#run under the root dirdirList=`ls -p $1 |grep / |tr -d /`for dir in $dirListdo	tar -czvf $dir.">
-<meta property="og:updated_time" content="2016-11-25T05:37:57.891Z">
+<meta property="og:description" content="批量递归重命名文件后缀名：1find . -maxdepth 2 -name &quot;*.jpg&quot; | rename &quot;s/.jpg/.jpeg/&quot;">
+<meta property="og:updated_time" content="2016-11-25T07:35:59.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux文件批量操作">
-<meta name="twitter:description" content="批量递归重命名文件后缀名：
-1find . -maxdepth 2 -name &quot;*.jpg&quot; | rename &quot;s/.jpg/.jpeg/&quot;
-
-批量压缩子文件夹：
-
-
-1234567#!/bin/bash#run under the root dirdirList=`ls -p $1 |grep / |tr -d /`for dir in $dirListdo	tar -czvf $dir.">
+<meta name="twitter:description" content="批量递归重命名文件后缀名：1find . -maxdepth 2 -name &quot;*.jpg&quot; | rename &quot;s/.jpg/.jpeg/&quot;">
 
 
 
@@ -422,11 +404,12 @@
 
       
         <ol>
-<li><p><strong>批量递归重命名文件后缀名</strong>：</p>
-<figure class="highlight sqf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">find</span> . -maxdepth <span class="number">2</span> -<span class="built_in">name</span> <span class="string">"*.jpg"</span> | rename <span class="string">"s/.jpg/.jpeg/"</span></div></pre></td></tr></table></figure>
+<li><strong>批量递归重命名文件后缀名</strong>：<figure class="highlight sqf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">find</span> . -maxdepth <span class="number">2</span> -<span class="built_in">name</span> <span class="string">"*.jpg"</span> | rename <span class="string">"s/.jpg/.jpeg/"</span></div></pre></td></tr></table></figure>
 </li>
-<li><p><strong>批量压缩子文件夹</strong>：</p>
-</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><strong>批量压缩子文件夹</strong>：</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="comment">#run under the root dir</span></div><div class="line">dirList=`ls -p <span class="variable">$1</span> |grep / |tr <span class="_">-d</span> /`</div><div class="line"><span class="keyword">for</span> dir <span class="keyword">in</span> <span class="variable">$dirList</span></div><div class="line"><span class="keyword">do</span></div><div class="line">	tar -czvf <span class="variable">$dir</span>.zip <span class="variable">$dir</span>/</div><div class="line"><span class="keyword">done</span></div></pre></td></tr></table></figure>
 <ol>
