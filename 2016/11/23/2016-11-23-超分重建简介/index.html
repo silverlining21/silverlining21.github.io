@@ -1,0 +1,1052 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="sr dl," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="content{:toc}
+
+超分辨率重建简介1. 引言
+图像超分辨率重建技术就是利用一组低质量、低分辨率图像(或运动序列)来产生单幅高质量、高分辨率图像。图像超分辨率重建应用领域及其宽广，在军事，医学，公共安全，计算机视觉等方面都存在着重要的应用前景。在计算机视觉领域，图像超分辨率重建技术有可能使图像实现从检出水平(detection level)向识别水平(recognition level">
+<meta property="og:type" content="article">
+<meta property="og:title" content="超分重建简介">
+<meta property="og:url" content="http://yoursite.com/2016/11/23/2016-11-23-超分重建简介/index.html">
+<meta property="og:site_name" content="silver lining's blog">
+<meta property="og:description" content="content{:toc}
+
+超分辨率重建简介1. 引言
+图像超分辨率重建技术就是利用一组低质量、低分辨率图像(或运动序列)来产生单幅高质量、高分辨率图像。图像超分辨率重建应用领域及其宽广，在军事，医学，公共安全，计算机视觉等方面都存在着重要的应用前景。在计算机视觉领域，图像超分辨率重建技术有可能使图像实现从检出水平(detection level)向识别水平(recognition level">
+<meta property="og:image" content="http://yoursite.com/F:\YoudaoImages\images\MSE.jpg">
+<meta property="og:image" content="http://yoursite.com/F:\YoudaoImages\images\PNSR.jpg">
+<meta property="og:image" content="http://yoursite.com/F:\YoudaoImages\images\SSMI.jpg">
+<meta property="og:updated_time" content="2016-11-24T06:35:56.603Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="超分重建简介">
+<meta name="twitter:description" content="content{:toc}
+
+超分辨率重建简介1. 引言
+图像超分辨率重建技术就是利用一组低质量、低分辨率图像(或运动序列)来产生单幅高质量、高分辨率图像。图像超分辨率重建应用领域及其宽广，在军事，医学，公共安全，计算机视觉等方面都存在着重要的应用前景。在计算机视觉领域，图像超分辨率重建技术有可能使图像实现从检出水平(detection level)向识别水平(recognition level">
+<meta name="twitter:image" content="http://yoursite.com/F:\YoudaoImages\images\MSE.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '2817384644',
+      author: 'silver lining'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/23/2016-11-23-超分重建简介/"/>
+
+
+
+
+
+  <title> 超分重建简介 | silver lining's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">silver lining's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">In me the tiger sniffe the rose. --- S.S.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/11/23/2016-11-23-超分重建简介/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="silver lining">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/freud.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="silver lining's blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="silver lining's blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                超分重建简介
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-23T21:09:44+08:00">
+                2016-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SuperResolution/" itemprop="url" rel="index">
+                    <span itemprop="name">SuperResolution</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/23/2016-11-23-超分重建简介/" class="leancloud_visitors" data-flag-title="超分重建简介">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>content<br>{:toc}</li>
+</ul>
+<h1 id="超分辨率重建简介"><a href="#超分辨率重建简介" class="headerlink" title="超分辨率重建简介"></a>超分辨率重建简介</h1><h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1. 引言"></a>1. 引言</h2><hr>
+<p>图像超分辨率重建技术就是利用一组低质量、低分辨率图像(或运动序列)来产生单幅高质量、高分辨率图像。图像超分辨率重建应用领域及其宽广，在军事，医学，公共安全，计算机视觉等方面都存在着重要的应用前景。在计算机视觉领域，图像超分辨率重建技术有可能使图像实现从检出水平(<strong>detection level</strong>)向识别水平(<strong>recognition level</strong>)的转化，或更进一步实现向细辨水平(<strong>identification level</strong>)的转化。图像超分辨率重建技术可以提高图像的识别能力和识别精度。图像超分辨率重建技术可以实现目标物的专注分析，从而可以获取感兴趣区域更高空间分辨率的图像，而不必直接采用数据量巨大的高空间分辨率图像的配置。</p>
+<p>目前超分辨率技术主要有以下两大类：<strong>基于重建的方法</strong>、 <strong>基于学习的方法</strong></p>
+<hr>
+<h2 id="2-基于重建的方法"><a href="#2-基于重建的方法" class="headerlink" title="2. 基于重建的方法"></a>2. 基于重建的方法</h2><hr>
+<p>   基于重建的超分辨率方法的基础是均衡及非均衡采样定理。它假设低分辨率的输入采样信号(图像) 能很好地预估出原始的高分辨率信号(图像)。绝大多数超分辨率算法都属于这一类，其中主要包括频域法和空域法。</p>
+<p>频率域方法是图像超分辨率重建中一类重要方法，其中最主要的是消混叠重建方法。消混叠重建方法是通过解混叠而改善图像的空间分辨率实现超分辨率复原，最早的研究工作是由 Tsai 和 Huang在 1984 年进行的。在原始场景信号带宽有限的假设下，利用离散傅立叶变换和连续傅立叶变换之间的平移、混叠性质，给出了一个由一系列欠采样观察图像数据复原高分辨率图像的公式。多幅观察图像经混频而得到的离散傅立叶变换系数与未知场景的连续傅立叶变换系数以方程组的形式联系起来，方程组的解就是原始图像的频率域系数，再对频率域系数进行傅立叶逆变换就可以实现原始图像的准确复原。</p>
+<p>在空域类方法中，其线性空域观测模型涉及全局和局部运动、光学模糊、帧内运动模糊、空间可变点扩散函数、非理想采样等内容。空域方法具有很强的包含空域先验约束的能力，主要包括非均匀空间样本内插、迭代反投影方法、凸集投影法、最大后验概率以及混合 MAP/ POCS 方法、最优和自适应滤波方法、确定性重建方法等。</p>
+<h2 id="3-基于学习的方法"><a href="#3-基于学习的方法" class="headerlink" title="3. 基于学习的方法"></a>3. 基于学习的方法</h2><hr>
+<p> 基于学习的方法是近年来超分辨率算法研究中的热点，它采用大量的高分辨率图像构造学习库产生学习模型，在对低分辨率图像进行恢复的过程中引入由学习模型获得的先验知识，以得到图像的高频细节，获得较好的图像恢复效果。</p>
+<p>具体步骤为：</p>
+<ol>
+<li><p>将高分辨率图像按照降质模型进行降质，产生训练集。</p>
+</li>
+<li><p>根据高分辨率图像的低频部分和高频部分对应关系对图像分块，通过一定算法进行学习，获得先验知识，建立学习模型。</p>
+</li>
+<li><p>以输入的低分辨率块为依据，在建立好的训练集中搜索最匹配的高频块。</p>
+</li>
+</ol>
+<p>基于学习的超分辨率方法中关键是建立学习模型，获得先验知识。常用的学习模型有马尔科夫随机场模型、图像金字塔模型、神经网络模型、主成分分析模型等。基于学习的方法充分利用了图像本身的先验知识，在不增加输入图像样本数量的情况下仍能产生高频细节，获得比基于重建方法更好的复原结果，并能较好的应用于人脸和文字等图像的复原。</p>
+<h2 id="4-研究前景"><a href="#4-研究前景" class="headerlink" title="4. 研究前景"></a>4. 研究前景</h2><p>目前，图像超分辨率重建的研究比较成熟，但距离实用还有较大差距。未来研究方向主要集中在以下几个方面：</p>
+<ol>
+<li><p>发展和寻求新的退化模型，使成像模型更加精确和全面，实现对点扩散函数和噪声的精确估计。图像超分辨率增强的成功依赖于准确的、符合实际成像系统特性和成像条件的降模型，而要获得符合实际成像过程的降质模型是十分困难的，通常采用简单、确定的降质模型进行近似，这样的近似模型与实际成像过程差距较大。</p>
+</li>
+<li><p>压缩域的超分辨率重建。传统的超分辨率算法都是针对图像序列，而实际中最常见的图像序列是视频文件。因而下一步的工作可以针对不同的视频压缩格式和编解码技术，在超分辨率算法中综合考虑成像模型和压缩算法带来的图像降质效果，以及运动补偿和编码传输机制，实现压缩域的超分辨率重建。</p>
+</li>
+<li><p>效率和鲁棒性问题。目前的超分辨率算法具有很高的计算复杂度，如何减少计算量，提高算法速度，是下一步值得研究问题。同时，在目前很多算法中都做了各种假设，如照度变等，这在实际应用中是很难满足的，因此需要研究稳健的算法满足实际应用的需要。</p>
+</li>
+<li><p>模糊图像和三维图像的超分辨率研究。模糊一直是图像处理中的一个难点，如何对模糊图像进行超分辨率需要进一步研究。目前针对三维图像的超分辨率研究还很少，如何对三维图像进行建模也是一个值得研究的课题。</p>
+</li>
+<li><p>超分辨率客观评价标准研究。目前对于图像超分辨率结果主要依靠人的主观评价，缺少一种客观的评价标准，现有的 PSNR、MSE 等并不能很好的反映超分辨率效果，需要发展一种客观的评价机制。<br>6.</p>
+</li>
+</ol>
+<h2 id="5-超分图像质量评估方式"><a href="#5-超分图像质量评估方式" class="headerlink" title="5. 超分图像质量评估方式"></a>5. 超分图像质量评估方式</h2><h3 id="主观评价方法"><a href="#主观评价方法" class="headerlink" title="主观评价方法"></a>主观评价方法</h3><p>主观评价主要是由人在感性认识上从主观感觉和统计结果的角度对图像质量做出相应的判定，主要的方法是目视判读。人类视觉系统被认为是最精密的光学成像系统，通过人眼接收物体的反射光在大脑中成像，然后由大脑根据储存的经验知识进行分析得到结论，这个过程所需时间很短。因此主观评价方法具有直观、简单的优点。</p>
+<h3 id="客观的评价方式"><a href="#客观的评价方式" class="headerlink" title="客观的评价方式"></a>客观的评价方式</h3><p>目视判读的优点是操作简单、效率高，可以有效剔除一些质量差的影像，避免无谓的工作，但是这种判定会因为观察人员的素质、经验、水平的不同以及外部环境的影响而产生较大的差异，因此需要有易于掌控和科学支持的定量评价方法。客观评价方法主要就是采用定量的评价指标对影像做定量分析，由此获取对图像质量好坏的判定。  按照对参考图像的需求，可将客观评价方法分为三类，分别为：无参考、部分参考和完全参考图像质量评价。</p>
+<p>图像质量评价离不开视觉评价，主观评价方法可以从配准、影像的整体亮度、色彩、反差、清晰度、影像内纹理、地物边缘、是否有蒙雾或马赛克等现象出现等方面做出判定，直观地得到图像在空间分解力、清晰度等方面的差异。但是这种方法的主观性比较强，人的视觉对影像上的各种变化并不都很敏感，图像的视觉质量强烈地取决于观察者，具有主观性、不全面性<br>全面客观视频质量评价方法是指把原始参考视频与失真视频在每一个对应帧中的每一个对应像素之问进行比较。准确的讲，这种方法得到的并不是真正的视频质量，而是失真视频相对于原始视频的相似程度或保真程度。最简单的方法如均方误差MSE和峰值信噪比PSNR，其应用比较广泛。</p>
+<ol>
+<li><p>均方误差 <strong>MSE</strong>（Mean Square Error）<br><img src="F:\YoudaoImages\images\MSE.jpg" alt="image"></p>
+<p> 其中，fij，f’ij分别代表原始参考视频对应帧和失真视频对应帧，M,N分别表示视频帧的高和宽.</p>
+</li>
+<li><p>峰值信噪比 <strong>PSNR</strong>（Peak Signal to Noise Ratio）<br><img src="F:\YoudaoImages\images\PNSR.jpg" alt="image"></p>
+<p> PSNR本质上与MSE相同，是MSE的对数表示。PSNR是最普遍，最广泛使用的评鉴画质的客观量测法，不过许多实验结果都显示，PSNR的分数无法和人眼看到的视觉品质完全一致，有可能PSNR较高者看起来反而比PSNR较低者差。这是因为人眼的视觉对于误差的敏感度并不是绝对的，其感知结果会受到许多因素的影响而产生变化（例如：人眼对空间频率较低的对比差异敏感度较高，人眼对亮度对比差异的敏感度较色度高，人眼对一个区域的感知结果会受到其周围邻近区域的影响.</p>
+</li>
+<li>结构相似性度量 <strong>SSIM</strong> (Structural Similarity Index)<br><img src="F:\YoudaoImages\images\SSMI.jpg" alt="image"><br> SSIM模型旨在比较参考和受损信号的结构信息，研究感知结构的损伤，而不是感知误差。上节中基于HVS的模型，采用自底向上的方法，模拟人类视觉系统中每个与质量感知相关的器官的功能，然后将每个部分联结起来实现评价模型，而SSIM是一种自顶向下的方法，模拟的是HVS整体的功能.</li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://blog.csdn.net/carson2005/article/details/11631081" target="_blank" rel="external">简介</a></p>
+<p><a href="http://blog.csdn.net/leixiaohua1020/article/details/11729289" target="_blank" rel="external">各种质量评估方法</a></p>
+<p><a href="http://wenku.baidu.com/view/2af1cfa5b0717fd5360cdc11.html?from=search&amp;isbtn=1" target="_blank" rel="external">常见超分图像评估指标</a></p>
+<p><a href="http://blog.csdn.net/leixiaohua1020/article/details/11729223" target="_blank" rel="external">开源评估工具</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sr-dl/" rel="tag"># sr dl</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/23/2016-11-23-Linux常用命令批量操作/" rel="next" title="Linux文件批量操作">
+                <i class="fa fa-chevron-left"></i> Linux文件批量操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/24/2016-11-24-深度学习模型压缩方法简介/" rel="prev" title="深度学习模型压缩方法简介">
+                深度学习模型压缩方法简介 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/freud.jpg"
+               alt="silver lining" />
+          <p class="site-author-name" itemprop="name">silver lining</p>
+          <p class="site-description motion-element" itemprop="description">Little strokes fell great oaks!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/silverlining21" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/prince-hd" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#超分辨率重建简介"><span class="nav-number">1.</span> <span class="nav-text">超分辨率重建简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-引言"><span class="nav-number">1.1.</span> <span class="nav-text">1. 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-基于重建的方法"><span class="nav-number">1.2.</span> <span class="nav-text">2. 基于重建的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-基于学习的方法"><span class="nav-number">1.3.</span> <span class="nav-text">3. 基于学习的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-研究前景"><span class="nav-number">1.4.</span> <span class="nav-text">4. 研究前景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-超分图像质量评估方式"><span class="nav-number">1.5.</span> <span class="nav-text">5. 超分图像质量评估方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主观评价方法"><span class="nav-number">1.5.1.</span> <span class="nav-text">主观评价方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客观的评价方式"><span class="nav-number">1.5.2.</span> <span class="nav-text">客观的评价方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">1.6.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">silver lining</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("z7478ekrJVaCaJwEiBhPz7EF-gzGzoHsz", "ffR31QTkrilsjRLycFY6On2l");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+</body>
+</html>
