@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[my markdown template]]></title>
+      <url>%2F2016%2F11%2F25%2Ftemplate%2F</url>
+      <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Create a new post1$ hexo new "My New Post" How many lives do we live? How many times do we die? ### raw label content]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[My Gallery]]></title>
       <url>%2F2016%2F11%2F25%2FMy-Gallery%2F</url>
       <content type="text"><![CDATA[photo]]></content>
