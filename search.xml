@@ -3,16 +3,16 @@
   
     
     <entry>
-      <title><![CDATA[my markdown template]]></title>
-      <url>%2F2016%2F11%2F25%2Ftemplate%2F</url>
-      <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Create a new post1$ hexo new "My New Post" How many lives do we live? How many times do we die? ### raw label content]]></content>
+      <title><![CDATA[atom本地安装插件]]></title>
+      <url>%2F2016%2F11%2F25%2F2016-11-25-atmo%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6%2F</url>
+      <content type="text"><![CDATA[Atom 是专门为程序员推出的一个跨平台文本编辑器。具有简洁和直观的图形用户界面，并有很多有趣的特点：支持CSS，HTML，JavaScript等网页编程语言。它支持宏，自动完成分屏功能，集成了文件管理器。更稳重要的它具有很好的扩展性。由于有时候是网络原因会导致在线安装插件失败。 1234cd ~/.atom/packagesgit clone &lt;你想安装的 Package 的仓库链接&gt; # 比如：git clone git@github.com:shd101wyy/markdown-preview-enhanced.gitcd &lt;Package 路径&gt; # cd emmet-atomnpm install 重启AtomDone！]]></content>
     </entry>
 
     
     <entry>
-      <title><![CDATA[My Gallery]]></title>
-      <url>%2F2016%2F11%2F25%2FMy-Gallery%2F</url>
-      <content type="text"><![CDATA[photo]]></content>
+      <title><![CDATA[my markdown template]]></title>
+      <url>%2F2016%2F11%2F25%2Ftemplate%2F</url>
+      <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Create a new post1$ hexo new "My New Post" How many lives do we live? How many times do we die? ###]]></content>
     </entry>
 
     
