@@ -297,6 +297,158 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/silverlining21/silverlining21.github.io/2016/12/26/2016-12-26tensorflow自定义学习率下降/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="silver lining">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/freud.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="silver lining's blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="silver lining's blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/26/2016-12-26tensorflow自定义学习率下降/" itemprop="url">
+                  tensorflow custom learning rate decay
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-26T14:10:47+08:00">
+                2016-12-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technical-Report/" itemprop="url" rel="index">
+                    <span itemprop="name">Technical Report</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/26/2016-12-26tensorflow自定义学习率下降/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/26/2016-12-26tensorflow自定义学习率下降/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/26/2016-12-26tensorflow自定义学习率下降/" class="leancloud_visitors" data-flag-title="tensorflow custom learning rate decay">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>通过传递一个常量tensor lr给optimizer</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"># <span class="keyword">import</span> related module</div><div class="line"><span class="title">from</span> tensorflow.python.framework <span class="keyword">import</span> constant_op</div><div class="line"><span class="title">from</span> tensorflow.python.framework <span class="keyword">import</span> ops</div><div class="line"><span class="title">from</span> tensorflow.python.ops <span class="keyword">import</span> control_flow_ops</div><div class="line"><span class="title">from</span> tensorflow.python.ops <span class="keyword">import</span> math_ops</div><div class="line"></div><div class="line"># implementation <span class="keyword">of</span> inv decay <span class="keyword">in</span> caffe base_lr*（<span class="number">1</span>+gamm*itear）^(-power)</div><div class="line"></div><div class="line"><span class="title">def</span> inv_decay(learning_rate, global_step, gamma, power, name=<span class="type">None</span>):</div><div class="line">    <span class="keyword">if</span> global_step is <span class="type">None</span>:</div><div class="line">        raise <span class="type">ValueError</span>(<span class="string">"global_step is required for inv_decay."</span>)</div><div class="line">    with ops.name_scope(name, <span class="string">"InvDecay"</span>,</div><div class="line">                      [learning_rate, global_step,</div><div class="line">                       gamma, power]) <span class="keyword">as</span> name:</div><div class="line">        learning_rate = ops.convert_to_tensor(learning_rate, name=<span class="string">"learning_rate"</span>)</div><div class="line">        d<span class="keyword">type</span> = learning_rate.dtype</div><div class="line">        global_step = math_ops.cast(global_step, d<span class="keyword">type</span>)</div><div class="line">        gamma = math_ops.cast(gamma, d<span class="keyword">type</span>)</div><div class="line">        power = math_ops.cast(power, d<span class="keyword">type</span>)</div><div class="line">        base = math_ops.multiply(gamma, global_step)</div><div class="line"></div><div class="line">        return math_ops.multiply(learning_rate, math_ops.pow(<span class="number">1</span>+base, -power),</div><div class="line">                                 name=name)</div><div class="line"><span class="title">lr</span> = inv_decay(learning_rate=<span class="number">0.0005</span>, global_step=get_global_step_var()<span class="number">-2800000</span>,</div><div class="line">        gamma=<span class="number">0.0001</span>,</div><div class="line">        power=<span class="number">0.75</span>)</div><div class="line"></div><div class="line"><span class="title">tf</span>.summary.scalar('lr', lr)</div><div class="line"></div><div class="line"><span class="title">optimizer</span>=tf.train.<span class="type">GradientDescentOptimizer</span>(lr)</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/silverlining21/silverlining21.github.io/2016/11/25/2016-11-25-atmo本地安装插件/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1706,7 +1858,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1723,7 +1875,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

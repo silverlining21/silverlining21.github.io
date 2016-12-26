@@ -3,16 +3,23 @@
   
     
     <entry>
+      <title><![CDATA[tensorflow custom learning rate decay]]></title>
+      <url>%2F2016%2F12%2F26%2F2016-12-26tensorflow%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%A6%E4%B9%A0%E7%8E%87%E4%B8%8B%E9%99%8D%2F</url>
+      <content type="text"><![CDATA[基本原理通过传递一个常量tensor lr给optimizer 123456789101112131415161718192021222324252627282930# import related modulefrom tensorflow.python.framework import constant_opfrom tensorflow.python.framework import opsfrom tensorflow.python.ops import control_flow_opsfrom tensorflow.python.ops import math_ops# implementation of inv decay in caffe base_lr*（1+gamm*itear）^(-power)def inv_decay(learning_rate, global_step, gamma, power, name=None): if global_step is None: raise ValueError("global_step is required for inv_decay.") with ops.name_scope(name, "InvDecay", [learning_rate, global_step, gamma, power]) as name: learning_rate = ops.convert_to_tensor(learning_rate, name="learning_rate") dtype = learning_rate.dtype global_step = math_ops.cast(global_step, dtype) gamma = math_ops.cast(gamma, dtype) power = math_ops.cast(power, dtype) base = math_ops.multiply(gamma, global_step) return math_ops.multiply(learning_rate, math_ops.pow(1+base, -power), name=name)lr = inv_decay(learning_rate=0.0005, global_step=get_global_step_var()-2800000, gamma=0.0001, power=0.75)tf.summary.scalar('lr', lr)optimizer=tf.train.GradientDescentOptimizer(lr)]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[atom本地安装插件]]></title>
       <url>%2F2016%2F11%2F25%2F2016-11-25-atmo%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6%2F</url>
-      <content type="text"><![CDATA[Atom 是专门为程序员推出的一个跨平台文本编辑器。具有简洁和直观的图形用户界面，并有很多有趣的特点：支持CSS，HTML，JavaScript等网页编程语言。它支持宏，自动完成分屏功能，集成了文件管理器。更稳重要的它具有很好的扩展性。由于有时候是网络原因会导致在线安装插件失败。 12345cd ~/.atom/packages# 比如：git clone git@github.com:shd101wyy/markdown-preview-enhanced.gitgit clone &lt;你想安装的 Package 的仓库链接&gt; cd &lt;Package 路径&gt; # cd emmet-atomnpm install 重启AtomDone！]]></content>
+      <content type="text"><![CDATA[Atom 是专门为程序员推出的一个跨平台文本编辑器。具有简洁和直观的图形用户界面，并有很多有趣的特点：支持CSS，HTML，JavaScript等网页编程语言。它支持宏，自动完成分屏功能，集成了文件管理器。更稳重要的它具有很好的扩展性。由于有时候是网络原因会导致在线安装插件失败。 12345cd ~/.atom/packages# 比如：git clone git@github.com:shd101wyy/markdown-preview-enhanced.gitgit clone &lt;你想安装的 Package 的仓库链接&gt;cd &lt;Package 路径&gt; # cd markdown-preview-enhancednpm install # 或者 apm install 重启AtomDone！]]></content>
     </entry>
 
     
     <entry>
       <title><![CDATA[my markdown template]]></title>
       <url>%2F2016%2F11%2F25%2Ftemplate%2F</url>
-      <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Create a new post1$ hexo new "My New Post" How many lives do we live? How many times do we die? ###]]></content>
+      <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Create a new post1$ hexo new "My New Post" test How many lives do we live? How many times do we die?]]></content>
     </entry>
 
     
