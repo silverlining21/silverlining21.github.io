@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="tensorflow,custom learning rate," />
+  <meta name="keywords" content="tensorflow," />
 
 
 
@@ -84,19 +84,25 @@
 
 
 
-<meta name="description" content="基本原理通过传递一个常量tensor lr给optimizer
-123456789101112131415161718192021222324252627282930# import related modulefrom tensorflow.python.framework import constant_opfrom tensorflow.python.framework import ops">
+<meta name="description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。
+数据流图如图所示，左边的图表示z=x+y。从图中可以看到，x、y、 z是图中的三个节点，x和y分别有一个箭头指到z，在z节点的下方有一个+号，表明是一个加法操作，因此最后的输出结果就是z=x+">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tensorflow custom learning rate decay">
-<meta property="og:url" content="https://github.com/silverlining21/silverlining21.github.io/2016/12/26/2016-12-26tensorflow自定义学习率下降/index.html">
+<meta property="og:url" content="https://github.com/silverlining21/silverlining21.github.io/2017/01/04/2017-1-4tensorflow简介/index.html">
 <meta property="og:site_name" content="silver lining's blog">
-<meta property="og:description" content="基本原理通过传递一个常量tensor lr给optimizer
-123456789101112131415161718192021222324252627282930# import related modulefrom tensorflow.python.framework import constant_opfrom tensorflow.python.framework import ops">
-<meta property="og:updated_time" content="2016-12-26T06:18:40.541Z">
+<meta property="og:description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。
+数据流图如图所示，左边的图表示z=x+y。从图中可以看到，x、y、 z是图中的三个节点，x和y分别有一个箭头指到z，在z节点的下方有一个+号，表明是一个加法操作，因此最后的输出结果就是z=x+">
+<meta property="og:image" content="http://img.blog.csdn.net/20161008141454511">
+<meta property="og:image" content="http://img.blog.csdn.net/20161008150437451">
+<meta property="og:image" content="http://img.blog.csdn.net/20161008155902448">
+<meta property="og:image" content="http://img.blog.csdn.net/20161008162641319">
+<meta property="og:image" content="http://img.blog.csdn.net/20161009133020376">
+<meta property="og:updated_time" content="2017-01-04T13:08:42.142Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tensorflow custom learning rate decay">
-<meta name="twitter:description" content="基本原理通过传递一个常量tensor lr给optimizer
-123456789101112131415161718192021222324252627282930# import related modulefrom tensorflow.python.framework import constant_opfrom tensorflow.python.framework import ops">
+<meta name="twitter:description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。
+数据流图如图所示，左边的图表示z=x+y。从图中可以看到，x、y、 z是图中的三个节点，x和y分别有一个箭头指到z，在z节点的下方有一个+号，表明是一个加法操作，因此最后的输出结果就是z=x+">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161008141454511">
 
 
 
@@ -124,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="https://github.com/silverlining21/silverlining21.github.io/2016/12/26/2016-12-26tensorflow自定义学习率下降/"/>
+  <link rel="canonical" href="https://github.com/silverlining21/silverlining21.github.io/2017/01/04/2017-1-4tensorflow简介/"/>
 
 
 
@@ -299,7 +305,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/silverlining21/silverlining21.github.io/2016/12/26/2016-12-26tensorflow自定义学习率下降/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/silverlining21/silverlining21.github.io/2017/01/04/2017-1-4tensorflow简介/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="silver lining">
@@ -336,8 +342,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-26T14:10:47+08:00">
-                2016-12-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-04T21:08:39+08:00">
+                2017-01-04
               </time>
             
 
@@ -370,8 +376,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/26/2016-12-26tensorflow自定义学习率下降/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/26/2016-12-26tensorflow自定义学习率下降/" itemprop="commentCount"></span>
+                <a href="/2017/01/04/2017-1-4tensorflow简介/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/04/2017-1-4tensorflow简介/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -381,7 +387,7 @@
 
           
           
-             <span id="/2016/12/26/2016-12-26tensorflow自定义学习率下降/" class="leancloud_visitors" data-flag-title="tensorflow custom learning rate decay">
+             <span id="/2017/01/04/2017-1-4tensorflow简介/" class="leancloud_visitors" data-flag-title="tensorflow custom learning rate decay">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -406,8 +412,72 @@
       
 
       
-        <h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>通过传递一个常量tensor lr给optimizer</p>
-<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"># <span class="keyword">import</span> related module</div><div class="line"><span class="title">from</span> tensorflow.python.framework <span class="keyword">import</span> constant_op</div><div class="line"><span class="title">from</span> tensorflow.python.framework <span class="keyword">import</span> ops</div><div class="line"><span class="title">from</span> tensorflow.python.ops <span class="keyword">import</span> control_flow_ops</div><div class="line"><span class="title">from</span> tensorflow.python.ops <span class="keyword">import</span> math_ops</div><div class="line"></div><div class="line"># implementation <span class="keyword">of</span> inv decay <span class="keyword">in</span> caffe base_lr*（<span class="number">1</span>+gamm*itear）^(-power)</div><div class="line"></div><div class="line"><span class="title">def</span> inv_decay(learning_rate, global_step, gamma, power, name=<span class="type">None</span>):</div><div class="line">    <span class="keyword">if</span> global_step is <span class="type">None</span>:</div><div class="line">        raise <span class="type">ValueError</span>(<span class="string">"global_step is required for inv_decay."</span>)</div><div class="line">    with ops.name_scope(name, <span class="string">"InvDecay"</span>,</div><div class="line">                      [learning_rate, global_step,</div><div class="line">                       gamma, power]) <span class="keyword">as</span> name:</div><div class="line">        learning_rate = ops.convert_to_tensor(learning_rate, name=<span class="string">"learning_rate"</span>)</div><div class="line">        d<span class="keyword">type</span> = learning_rate.dtype</div><div class="line">        global_step = math_ops.cast(global_step, d<span class="keyword">type</span>)</div><div class="line">        gamma = math_ops.cast(gamma, d<span class="keyword">type</span>)</div><div class="line">        power = math_ops.cast(power, d<span class="keyword">type</span>)</div><div class="line">        base = math_ops.multiply(gamma, global_step)</div><div class="line"></div><div class="line">        return math_ops.multiply(learning_rate, math_ops.pow(<span class="number">1</span>+base, -power),</div><div class="line">                                 name=name)</div><div class="line"><span class="title">lr</span> = inv_decay(learning_rate=<span class="number">0.0005</span>, global_step=get_global_step_var()<span class="number">-2800000</span>,</div><div class="line">        gamma=<span class="number">0.0001</span>,</div><div class="line">        power=<span class="number">0.75</span>)</div><div class="line"></div><div class="line"><span class="title">tf</span>.summary.scalar('lr', lr)</div><div class="line"></div><div class="line"><span class="title">optimizer</span>=tf.train.<span class="type">GradientDescentOptimizer</span>(lr)</div></pre></td></tr></table></figure>
+        <h1 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h1><p>在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。</p>
+<h2 id="数据流图"><a href="#数据流图" class="headerlink" title="数据流图"></a>数据流图</h2><p><img src="http://img.blog.csdn.net/20161008141454511" style="width:200px;height:200px;"><br>如图所示，左边的图表示<strong>z=x+y</strong>。从图中可以看到，<strong>x、y、 z</strong>是图中的三个节点，<strong>x</strong>和<strong>y</strong>分别有一个箭头指到<strong>z</strong>，在<strong>z</strong>节点的下方有一个+号，表明是一个加法操作，因此最后的输出结果就是<strong>z=x+y</strong>。右图是一种相对复杂点的情况，随着计算图逐步分析可以得到 <strong>y^=σ(xTw+b)</strong>。<br>在这样的数据流图中，有四个主要的元素：</p>
+<ul>
+<li>操作(operations)</li>
+<li>张量(tensors)</li>
+<li>变量(variables)</li>
+<li>会话(sessions)</li>
+</ul>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>把算法表示成一个个操作的叠加，可以非常清晰地看到数据之间的关系，而且这样的基本操作也具有普遍性。在TensorFlow中，当数据流过操作节点的时候就可以对数据进行操作。一个操作可以有零个或多个输入，产生零个或多个输出。一个操作可能是一次数学计算，一个变量或常量，一个数据流走向控制，一次文件IO或者是一次网络通信。其中，一个常量可以看做是没有输入，只有一个固定输出的操作。具体操作如下所示：</p>
+<table>
+<thead>
+<tr>
+<th>操作类型</th>
+<th>例子       </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>元素运算</td>
+<td>Add,Mul</td>
+</tr>
+<tr>
+<td>矩阵运算</td>
+<td>MatMul,MatrixInverse</td>
+</tr>
+<tr>
+<td>数值产生</td>
+<td>Constant,Variable</td>
+</tr>
+<tr>
+<td>神经网络单元</td>
+<td>SoftMax,ReLU,Conv2D</td>
+</tr>
+<tr>
+<td>I/O</td>
+<td>Save,Restore</td>
+</tr>
+</tbody>
+</table>
+<p>每一种操作都需要相对应的底层计算支持，比如在GPU上使用就需要实现在GPU上的操作符，在CPU上使用就要实现在CPU上的操作符。</p>
+<h2 id="张量"><a href="#张量" class="headerlink" title="张量"></a>张量</h2><p>在计算图中，每个边就代表数据从一个操作流到另一个操作。这些数据被表示为张量，一个张量可以看做是多维的数组或者高维的矩阵。<br>关于TensorFlow中的张量，需要注意的是张量本身并没有保存任何值，张量仅仅提供了访问数值的一个接口，可以看做是数值的一种引用。在TensorFlow实际使用中我们也可以发现，在run之前的张量并没有分配空间，此时的张量仅仅表示了一种数值的抽象，用来连接不同的节点，表示数据在不同操作之间的流动。<br>TensorFlow中还提供了SparseTensor数据结构，用来表示稀疏张量。</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>变量是计算图中可以改变的节点。比如当计算权重的时候，随着迭代的进行，每次权重的值会发生相应的变化，这样的值就可以当做变量。在实际处理时，一般把需要训练的值指定为变量。在使用变量的时候，需要指定变量的初始值，变量的大小和数据类型就是根据初始值来推断的。<br>在构建计算图的时候，指定一个变量实际上需要增加三个节点：</p>
+<ul>
+<li>实际的变量节点</li>
+<li>一个产生初始值的操作，通常是一个常量节点</li>
+<li>一个初始化操作，把初始值赋予到变量<br>变量<br>如图所示，v代表的是实际的变量，i是产生初始值的节点，上面的assign节点将初始值赋予变量，assign操作以后，产生已经初始化的变量值v’。</li>
+</ul>
+<p><img src="http://img.blog.csdn.net/20161008150437451" style="width:200px;height:200px;"></p>
+<h2 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h2><p>在TensorFlow中，所有操作都必须在会话（session）中执行，会话负责分配和管理各种资源。在会话中提供了一个run方法，可以用它来执行计算图整体或者其中的一部分节点。在进行run的时候，还需要用feed_dict把相关数据输入到计算图。<br>当run被调用的时候，TensorFlow将会从指定的输出节点开始，向前查找所有的依赖界节点，所有依赖节点都将被执行。这些操作随后将被分配到物理执行单元上（比如CPU或GPU），这种分配规则由TensorFlow中的分配算法决定。</p>
+<h1 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h1><p>在执行的时候，TensorFlow支持两种方式：一种是单机版本，可以在单机上支持多个计算设备，还有一种是分布式版本，支持多机多设备。在TensorFlow刚出来的时候，只支持第一种方式，后来开源了分布式版本。<br><img src="http://img.blog.csdn.net/20161008155902448" style="width:200px;height:200px;"></p>
+<h2 id="执行-1"><a href="#执行-1" class="headerlink" title="执行"></a>执行</h2><p>当client发出run请求时，master会将这个请求分配到不同的worker上，这些worker负责监控具体的计算设备。<br>计算设备<br>所有的计算任务最终都将分配到实际的硬件上执行。除了CPU和GPU之外，TensorFlow也支持自定义硬件，比如谷歌自己使用的TPU（Tensor Processing Unit）。一个worker需要管理多个设备，所以这些设备的名称需要加上worker的名字，比如/cpu:0表示第一个CPU。</p>
+<h2 id="任务分配算法"><a href="#任务分配算法" class="headerlink" title="任务分配算法"></a>任务分配算法</h2><p>如何将某个计算节点分配到具体设备上，TensorFlow提供了分配算法（placement algorithm）。<br>分配算法首先模拟计算图的执行，从输入节点到输出节点进行遍历，在遍历过程中遇到节点v，需要决定将这个节点分配到设备D={d1,…,dn}中的某一个设备上，具体分配将使用一个成本模型Cv(d)。这个成本模型需要考虑四个方面的信息来决定最优的执行设备<strong>d^=argmind∈DCv(d)：</strong></p>
+<ol>
+<li>该设备是否实现了这个操作，比如某个操作不能在GPU上实现，那么所有的GPU成本都为无穷大</li>
+<li>估计节点的输入和输出数据大小</li>
+<li>在设备上执行时间</li>
+<li>如果输入的数据在另一个设备上，还需要考虑数据在不同设备间传输的成本  </li>
+</ol>
+<h2 id="跨设备执行"><a href="#跨设备执行" class="headerlink" title="跨设备执行"></a>跨设备执行</h2><p>如果用户系统有多个设备，任务分配算法就需要将节点分配到不同的设备上，在这个分配过程中，可能会出现一个设备中的输入依赖于另一个设备上的输出。此时就需要设备之间交叉执行。</p>
+<h2 id="交叉执行"><a href="#交叉执行" class="headerlink" title="交叉执行"></a>交叉执行</h2><p>如图所示，设备A上有节点ν，设备B上有节点α和β，其中ν的输出是α和β的输入。在计算图中，ν→α和ν→β就需要跨设备执行。此时，TensorFlow将会自动在适当位置增加send和recv节点，在节点ν后面增加一个send节点，在α和β前面增加recv节点，send和recv节点之间使用额外的边进行链接。当数据流过这两个节点的时候就需要进行设备间通信，设备间通信方式包括TCP和RDMA等方式。此外，TensorFlow还会对recv节点进行进一步的优化，可以将设备B上的两个recv节点进行合并，减少通信次数，如图(c)所示。<br><img src="http://img.blog.csdn.net/20161008162641319" style="width:200px;height:200px;"></p>
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>在编译的时候，TensorFlow还会进行一些优化以提高性能。</p>
+<h2 id="子图消除"><a href="#子图消除" class="headerlink" title="子图消除"></a>子图消除</h2><p>在程序中，常常有一些重复的操作，可以把这些操作进行合并。可以将反复进行计算的同一个子图进行合并，保存其中的一个输出，在其他地方只需要直接调用就可以了。</p>
+<h2 id="调度优化"><a href="#调度优化" class="headerlink" title="调度优化"></a>调度优化</h2><p>节点的执行越晚越好，这样的话，这个节点只在内存中保留较短的时间，可以有效降低内存的使用量。合理调度也能降低send和recv节点的网络冲突。</p>
+<h3 id="精度优化"><a href="#精度优化" class="headerlink" title="精度优化"></a>精度优化</h3><p>许多机器学习算法不需要高的浮点精度，比如float32，只需要16位精度就够了，因此可以将32位精度降低为16位精度。当需要转换成32位精度时，只需要将尾部直接补0即可。</p>
+<h1 id="反向传播的计算图"><a href="#反向传播的计算图" class="headerlink" title="反向传播的计算图"></a>反向传播的计算图</h1><p>在神经网络训练中，需要使用到反向传播算法。在TensorFlow等深度学习框架中，梯度计算都是自动进行的，不需要人工进行梯度计算，这样只需要使用者定义网络的结构，其他工作都由深度学习框架自动完成，大大简化了算法验证。在TensorFlow中，梯度计算也是采用了计算图的结构。<br><img src="http://img.blog.csdn.net/20161009133020376" style="width:200px;height:200px;"></p>
+<h2 id="梯度计算"><a href="#梯度计算" class="headerlink" title="梯度计算"></a>梯度计算</h2><p>如图，在神经网络中常常需要对权重w进行求导。这样的函数前向计算的式子为:<br><strong>z=h(y)，y=g(x)，x=f(w)</strong><br>整合一下就可以得到：<br>z=h(g(f(w)))<br>使用链式求导法则，可以得到<br><strong>dz/dw=dz/dy <em> dy/dx </em> dx/dw</strong><br>在计算图中，每个节点边上会自动增加梯度节点，然后每个梯度节点与前一个梯度节点相乘，最终在右下角可以得到<strong>dz/dw</strong>的值。</p>
 
       
     </div>
@@ -433,8 +503,6 @@
           
             <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
           
-            <a href="/tags/custom-learning-rate/" rel="tag"># custom learning rate</a>
-          
         </div>
       
 
@@ -442,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/25/2016-11-25-atmo本地安装插件/" rel="next" title="atom本地安装插件">
-                <i class="fa fa-chevron-left"></i> atom本地安装插件
+              <a href="/2016/12/30/2016-12-30 17caffe_inner_prod/" rel="next" title="caffe fc层源码注释">
+                <i class="fa fa-chevron-left"></i> caffe fc层源码注释
               </a>
             
           </div>
@@ -451,10 +519,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/30/2016-12-30 17caffe_inner_prod/" rel="prev" title="caffe fc层源码注释">
-                caffe fc层源码注释 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -480,8 +544,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/26/2016-12-26tensorflow自定义学习率下降/"
-           data-title="tensorflow custom learning rate decay" data-url="https://github.com/silverlining21/silverlining21.github.io/2016/12/26/2016-12-26tensorflow自定义学习率下降/">
+      <div class="ds-thread" data-thread-key="2017/01/04/2017-1-4tensorflow简介/"
+           data-title="tensorflow custom learning rate decay" data-url="https://github.com/silverlining21/silverlining21.github.io/2017/01/04/2017-1-4tensorflow简介/">
       </div>
     
   </div>
@@ -624,7 +688,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本原理"><span class="nav-number">1.</span> <span class="nav-text">基本原理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计算图"><span class="nav-number">1.</span> <span class="nav-text">计算图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据流图"><span class="nav-number">1.1.</span> <span class="nav-text">数据流图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">1.2.</span> <span class="nav-text">操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#张量"><span class="nav-number">1.3.</span> <span class="nav-text">张量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.4.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#会话"><span class="nav-number">1.5.</span> <span class="nav-text">会话</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#执行"><span class="nav-number">2.</span> <span class="nav-text">执行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#执行-1"><span class="nav-number">2.1.</span> <span class="nav-text">执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务分配算法"><span class="nav-number">2.2.</span> <span class="nav-text">任务分配算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨设备执行"><span class="nav-number">2.3.</span> <span class="nav-text">跨设备执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交叉执行"><span class="nav-number">2.4.</span> <span class="nav-text">交叉执行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优化"><span class="nav-number">3.</span> <span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#子图消除"><span class="nav-number">3.1.</span> <span class="nav-text">子图消除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调度优化"><span class="nav-number">3.2.</span> <span class="nav-text">调度优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#精度优化"><span class="nav-number">3.2.1.</span> <span class="nav-text">精度优化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反向传播的计算图"><span class="nav-number">4.</span> <span class="nav-text">反向传播的计算图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度计算"><span class="nav-number">4.1.</span> <span class="nav-text">梯度计算</span></a></li></ol></li></ol></div>
             
 
           </div>
