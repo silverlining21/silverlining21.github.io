@@ -84,24 +84,21 @@
 
 
 
-<meta name="description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。
-数据流图如图所示，左边的图表示z=x+y。从图中可以看到，x、y、 z是图中的三个节点，x和y分别有一个箭头指到z，在z节点的下方有一个+号，表明是一个加法操作，因此最后的输出结果就是z=x+">
+<meta name="description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tensorflow执行流程">
 <meta property="og:url" content="https://github.com/silverlining21/silverlining21.github.io/2017/01/04/2017-1-4tensorflow简介/index.html">
 <meta property="og:site_name" content="silver lining's blog">
-<meta property="og:description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。
-数据流图如图所示，左边的图表示z=x+y。从图中可以看到，x、y、 z是图中的三个节点，x和y分别有一个箭头指到z，在z节点的下方有一个+号，表明是一个加法操作，因此最后的输出结果就是z=x+">
+<meta property="og:description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。">
 <meta property="og:image" content="http://img.blog.csdn.net/20161008141454511">
 <meta property="og:image" content="http://img.blog.csdn.net/20161008150437451">
 <meta property="og:image" content="http://img.blog.csdn.net/20161008155902448">
 <meta property="og:image" content="http://img.blog.csdn.net/20161008162641319">
 <meta property="og:image" content="http://img.blog.csdn.net/20161009133020376">
-<meta property="og:updated_time" content="2017-01-04T13:22:25.813Z">
+<meta property="og:updated_time" content="2017-01-04T13:46:46.908Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tensorflow执行流程">
-<meta name="twitter:description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。
-数据流图如图所示，左边的图表示z=x+y。从图中可以看到，x、y、 z是图中的三个节点，x和y分别有一个箭头指到z，在z节点的下方有一个+号，表明是一个加法操作，因此最后的输出结果就是z=x+">
+<meta name="twitter:description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20161008141454511">
 
 
@@ -412,7 +409,12 @@
       
 
       
-        <h1 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h1><p>在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。</p>
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<h1 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h1><p>在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。<br><a id="more"></a></p>
 <h2 id="数据流图"><a href="#数据流图" class="headerlink" title="数据流图"></a>数据流图</h2><p><img src="http://img.blog.csdn.net/20161008141454511" class="full-image"><br>如图所示，左边的图表示<strong>z=x+y</strong>。从图中可以看到，<strong>x、y、 z</strong>是图中的三个节点，<strong>x</strong>和<strong>y</strong>分别有一个箭头指到<strong>z</strong>，在<strong>z</strong>节点的下方有一个+号，表明是一个加法操作，因此最后的输出结果就是<strong>z=x+y</strong>。右图是一种相对复杂点的情况，随着计算图逐步分析可以得到 <strong>y^=σ(xTw+b)</strong>。<br>在这样的数据流图中，有四个主要的元素：</p>
 <ul>
 <li>操作(operations)</li>
@@ -477,7 +479,7 @@
 <h2 id="调度优化"><a href="#调度优化" class="headerlink" title="调度优化"></a>调度优化</h2><p>节点的执行越晚越好，这样的话，这个节点只在内存中保留较短的时间，可以有效降低内存的使用量。合理调度也能降低send和recv节点的网络冲突。</p>
 <h3 id="精度优化"><a href="#精度优化" class="headerlink" title="精度优化"></a>精度优化</h3><p>许多机器学习算法不需要高的浮点精度，比如float32，只需要16位精度就够了，因此可以将32位精度降低为16位精度。当需要转换成32位精度时，只需要将尾部直接补0即可。</p>
 <h1 id="反向传播的计算图"><a href="#反向传播的计算图" class="headerlink" title="反向传播的计算图"></a>反向传播的计算图</h1><p>在神经网络训练中，需要使用到反向传播算法。在TensorFlow等深度学习框架中，梯度计算都是自动进行的，不需要人工进行梯度计算，这样只需要使用者定义网络的结构，其他工作都由深度学习框架自动完成，大大简化了算法验证。在TensorFlow中，梯度计算也是采用了计算图的结构。<br><img src="http://img.blog.csdn.net/20161009133020376" class="half-image"></p>
-<h2 id="梯度计算"><a href="#梯度计算" class="headerlink" title="梯度计算"></a>梯度计算</h2><p>如图，在神经网络中常常需要对权重w进行求导。这样的函数前向计算的式子为:<br><strong>z=h(y)，y=g(x)，x=f(w)</strong><br>整合一下就可以得到：<br>z=h(g(f(w)))<br>使用链式求导法则，可以得到<br><strong>dz/dw=dz/dy <em> dy/dx </em> dx/dw</strong><br>在计算图中，每个节点边上会自动增加梯度节点，然后每个梯度节点与前一个梯度节点相乘，最终在右下角可以得到<strong>dz/dw</strong>的值。</p>
+<h2 id="梯度计算"><a href="#梯度计算" class="headerlink" title="梯度计算"></a>梯度计算</h2><p>如图，在神经网络中常常需要对权重w进行求导。这样的函数前向计算的式子为:<br>$$ z=h\left( x\right) ,y=g\left( x\right) ,x=f\left( w\right) $$<br>整合一下就可以得到：<br>$$z=h\left( g\left( f\left( w\right) \right) $$<br>使用链式求导法则，可以得到<br>$$ \dfrac {dz} {dw}=\dfrac {dz} {dy}\times \dfrac {dy} {dx}\times \cdot \dfrac {dx} {dw} $$<br>在计算图中，每个节点边上会自动增加梯度节点，然后每个梯度节点与前一个梯度节点相乘，最终在右下角可以得到\ \dfrac {dz} {dw} \的值。</p>
 <p>reference：<a href="http://blog.csdn.net/tinyzhao/article/details/52755647" target="_blank" rel="external">http://blog.csdn.net/tinyzhao/article/details/52755647</a></p>
 
       
