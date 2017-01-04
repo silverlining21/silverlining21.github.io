@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://img.blog.csdn.net/20161008155902448">
 <meta property="og:image" content="http://img.blog.csdn.net/20161008162641319">
 <meta property="og:image" content="http://img.blog.csdn.net/20161009133020376">
-<meta property="og:updated_time" content="2017-01-04T13:46:46.908Z">
+<meta property="og:updated_time" content="2017-01-04T13:53:26.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tensorflow执行流程">
 <meta name="twitter:description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。">
@@ -464,8 +464,8 @@
 <p><img src="http://img.blog.csdn.net/20161008150437451" class="full-image"></p>
 <h2 id="会话"><a href="#会话" class="headerlink" title="会话"></a>会话</h2><p>在TensorFlow中，所有操作都必须在会话（session）中执行，会话负责分配和管理各种资源。在会话中提供了一个run方法，可以用它来执行计算图整体或者其中的一部分节点。在进行run的时候，还需要用feed_dict把相关数据输入到计算图。<br>当run被调用的时候，TensorFlow将会从指定的输出节点开始，向前查找所有的依赖界节点，所有依赖节点都将被执行。这些操作随后将被分配到物理执行单元上（比如CPU或GPU），这种分配规则由TensorFlow中的分配算法决定。</p>
 <h1 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h1><p>在执行的时候，TensorFlow支持两种方式：一种是单机版本，可以在单机上支持多个计算设备，还有一种是分布式版本，支持多机多设备。在TensorFlow刚出来的时候，只支持第一种方式，后来开源了分布式版本。<br><img src="http://img.blog.csdn.net/20161008155902448" class="full-image"></p>
-<h2 id="执行-1"><a href="#执行-1" class="headerlink" title="执行"></a>执行</h2><p>当client发出run请求时，master会将这个请求分配到不同的worker上，这些worker负责监控具体的计算设备。<br>计算设备<br>所有的计算任务最终都将分配到实际的硬件上执行。除了CPU和GPU之外，TensorFlow也支持自定义硬件，比如谷歌自己使用的TPU（Tensor Processing Unit）。一个worker需要管理多个设备，所以这些设备的名称需要加上worker的名字，比如/cpu:0表示第一个CPU。</p>
-<h2 id="任务分配算法"><a href="#任务分配算法" class="headerlink" title="任务分配算法"></a>任务分配算法</h2><p>如何将某个计算节点分配到具体设备上，TensorFlow提供了分配算法（placement algorithm）。<br>分配算法首先模拟计算图的执行，从输入节点到输出节点进行遍历，在遍历过程中遇到节点v，需要决定将这个节点分配到设备D={d1,…,dn}中的某一个设备上，具体分配将使用一个成本模型Cv(d)。这个成本模型需要考虑四个方面的信息来决定最优的执行设备<strong>d^=argmind∈DCv(d)：</strong></p>
+<h2 id="执行-1"><a href="#执行-1" class="headerlink" title="执行"></a>执行</h2><p>当client发出run请求时，master会将这个请求分配到不同的worker上，这些worker负责监控具体的计算设备。<br>计算设备<br>所有的计算任务最终都将分配到实际的硬件上执行。除了CPU和GPU之外，TensorFlow也支持自定义硬件，比如谷歌自己使用的TPU（Tensor Processing Unit）。一个worker需要管理多个设备，所以这些设备的名称需要加上worker的名字，比如 <strong>/cpu:0</strong> 表示第一个CPU。</p>
+<h2 id="任务分配算法"><a href="#任务分配算法" class="headerlink" title="任务分配算法"></a>任务分配算法</h2><p>如何将某个计算节点分配到具体设备上，TensorFlow提供了分配算法（placement algorithm）。<br>分配算法首先模拟计算图的执行，从输入节点到输出节点进行遍历，在遍历过程中遇到节点v，需要决定将这个节点分配到设备D={d1,…,dn}中的某一个设备上，具体分配将使用一个成本模型Cv(d)。这个成本模型需要考虑四个方面的信息来决定最优的执行设备\( \overline {d}=\arg \min <em>{d\varepsilon D}C</em>{v}\left( d\right) \)</p>
 <ol>
 <li>该设备是否实现了这个操作，比如某个操作不能在GPU上实现，那么所有的GPU成本都为无穷大</li>
 <li>估计节点的输入和输出数据大小</li>
@@ -479,7 +479,7 @@
 <h2 id="调度优化"><a href="#调度优化" class="headerlink" title="调度优化"></a>调度优化</h2><p>节点的执行越晚越好，这样的话，这个节点只在内存中保留较短的时间，可以有效降低内存的使用量。合理调度也能降低send和recv节点的网络冲突。</p>
 <h3 id="精度优化"><a href="#精度优化" class="headerlink" title="精度优化"></a>精度优化</h3><p>许多机器学习算法不需要高的浮点精度，比如float32，只需要16位精度就够了，因此可以将32位精度降低为16位精度。当需要转换成32位精度时，只需要将尾部直接补0即可。</p>
 <h1 id="反向传播的计算图"><a href="#反向传播的计算图" class="headerlink" title="反向传播的计算图"></a>反向传播的计算图</h1><p>在神经网络训练中，需要使用到反向传播算法。在TensorFlow等深度学习框架中，梯度计算都是自动进行的，不需要人工进行梯度计算，这样只需要使用者定义网络的结构，其他工作都由深度学习框架自动完成，大大简化了算法验证。在TensorFlow中，梯度计算也是采用了计算图的结构。<br><img src="http://img.blog.csdn.net/20161009133020376" class="half-image"></p>
-<h2 id="梯度计算"><a href="#梯度计算" class="headerlink" title="梯度计算"></a>梯度计算</h2><p>如图，在神经网络中常常需要对权重w进行求导。这样的函数前向计算的式子为:<br>$$ z=h\left( x\right) ,y=g\left( x\right) ,x=f\left( w\right) $$<br>整合一下就可以得到：<br>$$z=h\left( g\left( f\left( w\right) \right) $$<br>使用链式求导法则，可以得到<br>$$ \dfrac {dz} {dw}=\dfrac {dz} {dy}\times \dfrac {dy} {dx}\times \cdot \dfrac {dx} {dw} $$<br>在计算图中，每个节点边上会自动增加梯度节点，然后每个梯度节点与前一个梯度节点相乘，最终在右下角可以得到\ \dfrac {dz} {dw} \的值。</p>
+<h2 id="梯度计算"><a href="#梯度计算" class="headerlink" title="梯度计算"></a>梯度计算</h2><p>如图，在神经网络中常常需要对权重w进行求导。这样的函数前向计算的式子为:<br>$$ z=h\left( x\right) ,y=g\left( x\right) ,x=f\left( w\right) $$<br>整合一下就可以得到：<br>$$ z=h\left( g\left( f\left( w\right) \right) $$<br>使用链式求导法则，可以得到<br>$$ \dfrac {dz} {dw}=\dfrac {dz} {dy}\times \dfrac {dy} {dx}\times \cdot \dfrac {dx} {dw} $$<br>在计算图中，每个节点边上会自动增加梯度节点，然后每个梯度节点与前一个梯度节点相乘，最终在右下角可以得到\(\dfrac {dz} {dw} \)的值。</p>
 <p>reference：<a href="http://blog.csdn.net/tinyzhao/article/details/52755647" target="_blank" rel="external">http://blog.csdn.net/tinyzhao/article/details/52755647</a></p>
 
       
