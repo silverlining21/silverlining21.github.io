@@ -84,21 +84,24 @@
 
 
 
-<meta name="description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。">
+<meta name="description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。
+数据流图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tensorflow执行流程">
 <meta property="og:url" content="https://github.com/silverlining21/silverlining21.github.io/2017/01/04/2017-1-4tensorflow简介/index.html">
 <meta property="og:site_name" content="silver lining's blog">
-<meta property="og:description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。">
+<meta property="og:description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。
+数据流图">
 <meta property="og:image" content="http://img.blog.csdn.net/20161008141454511">
 <meta property="og:image" content="http://img.blog.csdn.net/20161008150437451">
 <meta property="og:image" content="http://img.blog.csdn.net/20161008155902448">
 <meta property="og:image" content="http://img.blog.csdn.net/20161008162641319">
 <meta property="og:image" content="http://img.blog.csdn.net/20161009133020376">
-<meta property="og:updated_time" content="2017-01-04T13:53:26.092Z">
+<meta property="og:updated_time" content="2017-01-04T13:54:22.660Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tensorflow执行流程">
-<meta name="twitter:description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。">
+<meta name="twitter:description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。
+数据流图">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20161008141454511">
 
 
@@ -413,9 +416,9 @@
 </script>
 
 
-
-<h1 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h1><p>在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。<br><a id="more"></a></p>
-<h2 id="数据流图"><a href="#数据流图" class="headerlink" title="数据流图"></a>数据流图</h2><p><img src="http://img.blog.csdn.net/20161008141454511" class="full-image"><br>如图所示，左边的图表示<strong>z=x+y</strong>。从图中可以看到，<strong>x、y、 z</strong>是图中的三个节点，<strong>x</strong>和<strong>y</strong>分别有一个箭头指到<strong>z</strong>，在<strong>z</strong>节点的下方有一个+号，表明是一个加法操作，因此最后的输出结果就是<strong>z=x+y</strong>。右图是一种相对复杂点的情况，随着计算图逐步分析可以得到 <strong>y^=σ(xTw+b)</strong>。<br>在这样的数据流图中，有四个主要的元素：</p>
+<!-- first paragraph -->
+<h1 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h1><p>在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。</p>
+<h2 id="数据流图"><a href="#数据流图" class="headerlink" title="数据流图"></a>数据流图</h2><p><img src="http://img.blog.csdn.net/20161008141454511" class="full-image"><br><a id="more"></a><br>如图所示，左边的图表示<strong>z=x+y</strong>。从图中可以看到，<strong>x、y、 z</strong>是图中的三个节点，<strong>x</strong>和<strong>y</strong>分别有一个箭头指到<strong>z</strong>，在<strong>z</strong>节点的下方有一个+号，表明是一个加法操作，因此最后的输出结果就是<strong>z=x+y</strong>。右图是一种相对复杂点的情况，随着计算图逐步分析可以得到 <strong>y^=σ(xTw+b)</strong>。<br>在这样的数据流图中，有四个主要的元素：</p>
 <ul>
 <li>操作(operations)</li>
 <li>张量(tensors)</li>
