@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -87,7 +87,7 @@
 <meta name="description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。
 数据流图如图所示，左边的图表示z=x+y。从图中可以看到，x、y、 z是图中的三个节点，x和y分别有一个箭头指到z，在z节点的下方有一个+号，表明是一个加法操作，因此最后的输出结果就是z=x+">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tensorflow custom learning rate decay">
+<meta property="og:title" content="tensorflow执行流程">
 <meta property="og:url" content="https://github.com/silverlining21/silverlining21.github.io/2017/01/04/2017-1-4tensorflow简介/index.html">
 <meta property="og:site_name" content="silver lining's blog">
 <meta property="og:description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。
@@ -97,9 +97,9 @@
 <meta property="og:image" content="http://img.blog.csdn.net/20161008155902448">
 <meta property="og:image" content="http://img.blog.csdn.net/20161008162641319">
 <meta property="og:image" content="http://img.blog.csdn.net/20161009133020376">
-<meta property="og:updated_time" content="2017-01-04T13:16:10.215Z">
+<meta property="og:updated_time" content="2017-01-04T13:22:25.813Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tensorflow custom learning rate decay">
+<meta name="twitter:title" content="tensorflow执行流程">
 <meta name="twitter:description" content="计算图在TensorFlow中，算法都被表示成计算图（computational graphs）。计算图也叫数据流图，可以把计算图看做是一种有向图，图中的节点表示操作，图中的边代表在不同操作之间的数据流动。
 数据流图如图所示，左边的图表示z=x+y。从图中可以看到，x、y、 z是图中的三个节点，x和y分别有一个箭头指到z，在z节点的下方有一个+号，表明是一个加法操作，因此最后的输出结果就是z=x+">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20161008141454511">
@@ -136,7 +136,7 @@
 
 
 
-  <title> tensorflow custom learning rate decay | silver lining's blog </title>
+  <title> tensorflow执行流程 | silver lining's blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -157,7 +157,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -329,7 +329,7 @@
             
             
               
-                tensorflow custom learning rate decay
+                tensorflow执行流程
               
             
           </h1>
@@ -387,7 +387,7 @@
 
           
           
-             <span id="/2017/01/04/2017-1-4tensorflow简介/" class="leancloud_visitors" data-flag-title="tensorflow custom learning rate decay">
+             <span id="/2017/01/04/2017-1-4tensorflow简介/" class="leancloud_visitors" data-flag-title="tensorflow执行流程">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -546,7 +546,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2017/01/04/2017-1-4tensorflow简介/"
-           data-title="tensorflow custom learning rate decay" data-url="https://github.com/silverlining21/silverlining21.github.io/2017/01/04/2017-1-4tensorflow简介/">
+           data-title="tensorflow执行流程" data-url="https://github.com/silverlining21/silverlining21.github.io/2017/01/04/2017-1-4tensorflow简介/">
       </div>
     
   </div>
@@ -1101,7 +1101,24 @@
   <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
   
 
-  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
