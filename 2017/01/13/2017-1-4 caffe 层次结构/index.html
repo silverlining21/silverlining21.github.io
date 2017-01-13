@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Deep Learning,Caffe," />
 
 
 
@@ -84,16 +84,25 @@
 
 
 
-<meta name="description" content="Little strokes fell great oaks!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Categories">
-<meta property="og:url" content="https://github.com/silverlining21/silverlining21.github.io/categories/index.html">
+<meta name="description" content="Caffe从四个层次来理解：Blob，Layer,Net,Solver。
+BlobCaffe的基本数据结构，用四维矩阵1Batch\*Channel\*Height\*Width
+表示，存储了包括神经元的激活值、参数、以及相应的梯度（dW,db）。其中包含有cpu_data、gpu_data、cpu_diff、gpu_diff、
+mutable_cpu_data、mutable_gpu_data、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="caffe 层次结构">
+<meta property="og:url" content="https://github.com/silverlining21/silverlining21.github.io/2017/01/13/2017-1-4 caffe 层次结构/index.html">
 <meta property="og:site_name" content="silver lining's blog">
-<meta property="og:description" content="Little strokes fell great oaks!">
-<meta property="og:updated_time" content="2016-11-25T05:54:48.061Z">
+<meta property="og:description" content="Caffe从四个层次来理解：Blob，Layer,Net,Solver。
+BlobCaffe的基本数据结构，用四维矩阵1Batch\*Channel\*Height\*Width
+表示，存储了包括神经元的激活值、参数、以及相应的梯度（dW,db）。其中包含有cpu_data、gpu_data、cpu_diff、gpu_diff、
+mutable_cpu_data、mutable_gpu_data、">
+<meta property="og:updated_time" content="2017-01-13T09:57:55.818Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Categories">
-<meta name="twitter:description" content="Little strokes fell great oaks!">
+<meta name="twitter:title" content="caffe 层次结构">
+<meta name="twitter:description" content="Caffe从四个层次来理解：Blob，Layer,Net,Solver。
+BlobCaffe的基本数据结构，用四维矩阵1Batch\*Channel\*Height\*Width
+表示，存储了包括神经元的激活值、参数、以及相应的梯度（dW,db）。其中包含有cpu_data、gpu_data、cpu_diff、gpu_diff、
+mutable_cpu_data、mutable_gpu_data、">
 
 
 
@@ -121,19 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/silverlining21/silverlining21.github.io/categories/"/>
+  <link rel="canonical" href="https://github.com/silverlining21/silverlining21.github.io/2017/01/13/2017-1-4 caffe 层次结构/"/>
 
 
 
 
 
-  <title>
-  
-
-  
-    Categories | silver lining's blog
-  
-</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> caffe 层次结构 | silver lining's blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -154,7 +157,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left  ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -293,25 +296,193 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h2 class="post-title" itemprop="name headline">Categories</h2>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/silverlining21/silverlining21.github.io/2017/01/13/2017-1-4 caffe 层次结构/">
 
-</header>
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="silver lining">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/freud.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="silver lining's blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="silver lining's blog" src="">
+    </span>
+  </span>
 
     
-    
-      <div class="category-all-page">
-        <div class="category-all-title">
-            3 categories in total
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                caffe 层次结构
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-13T17:40:00+08:00">
+                2017-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technical-Report/" itemprop="url" rel="index">
+                    <span itemprop="name">Technical Report</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/01/13/2017-1-4 caffe 层次结构/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/13/2017-1-4 caffe 层次结构/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/13/2017-1-4 caffe 层次结构/" class="leancloud_visitors" data-flag-title="caffe 层次结构">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">Visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
         </div>
-        <div class="category-all">
-          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Literature/">Literature</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technical-Report/">Technical Report</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Weekly-Report/">Weekly Report</a><span class="category-list-count">1</span></li></ul>
-        </div>
-      </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Caffe从四个层次来理解：Blob，Layer,Net,Solver。</p>
+<h3 id="Blob"><a href="#Blob" class="headerlink" title="Blob"></a>Blob</h3><p>Caffe的基本数据结构，用四维矩阵<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Batch<span class="symbol">\*</span>Channel<span class="symbol">\*</span>Height<span class="symbol">\*</span>Width</div></pre></td></tr></table></figure></p>
+<p>表示，存储了包括神经元的<br>激活值、参数、以及相应的梯度<code>（dW,db）</code>。其中包含有<code>cpu_data、gpu_data、cpu_diff、gpu_diff、
+mutable_cpu_data、mutable_gpu_data、mutable_cpu_diff、mutable_gpu_diff</code>这一堆很像的东西，<br>分别表示存储在CPU和GPU上的数据（印象中二者的值好像是会自动同步成一致的）。其中带data的里面存<br>储的是激活值和<code>W、b</code>，diff中存储的是残差和<code>dW、db</code>。另外带<code>mutable</code>和不带<code>mutable</code>的一对指针所指<br>的位置是相同的，只是不带<code>mutable</code>的只读，而带<code>mutable</code>的可写。</p>
+<p><a href="http://imbinwang.github.io/blog/inside-caffe-code-blob" target="_blank" rel="external">for more details</a></p>
+<h3 id="Layer"><a href="#Layer" class="headerlink" title="Layer"></a>Layer</h3><p>代表神经网络的层，由各种各样的层来构成整个网络。一般一个图像或样本会从数据层中读进来，<br>然后一层一层的往后传。除了数据层比较特殊之外，其余大部分层都包含4个函数：<code>LayerSetUp、Reshape、
+Forward、Backward</code>。其中LayerSetup用于初始化层，开辟空间，填充初始值什么的。Reshape是对输入<br>值进行维度变换，比如pooling接全连接层的时候要先拉成一个向量再计算。Forward是前向传播，Backward是<br>后向传播。</p>
+<p>那么数据是如何在层之间传递的呢？每一层都会有一个（或多个）Bottom和top，分别存储输入和输出，<br>比如<code>bottom[0]-&gt;cpu_data()</code>存输入的神经元激活值，换成top存输出的，换成<code>cpu_diff()</code>存的是激活值的残差，<br>换成gpu是存在GPU上的数据，再带上<code>mutable</code>就可写了，这些是神经元激活值相关的，如果这个层前后有多个输入输出层，<br>就会有<code>bottom[1]</code>，比如<code>accuracy_layer</code>就有两个输入，fc8和label。而每层的参数会存在<code>this-&gt;blobs_</code>里，一般<code>this-&gt;blobs_[0]</code><br>存<code>W</code>，<code>this-&gt;blobs_[1]</code>存<code>b</code>，<code>this-&gt;blobs_[0]-&gt;cpu_data()</code>存的是W的值，<code>this-&gt;blobs_[0]-&gt;cpu_diff()</code>存的梯度dW，b和db也<br>类似，然后换成gpu是存在GPU上的数据，再带上mutable就可写了。</p>
+<p><a href="http://imbinwang.github.io/blog/inside-caffe-code-layer" target="_blank" rel="external">for more details</a></p>
+<h3 id="Net"><a href="#Net" class="headerlink" title="Net"></a>Net</h3><p> Net就是把各种层按train_val.prototxt的定义堆叠在一起，首先进行每个层的初始化，然后不断进行<code>Update</code>，每更新一次就<br>进行一次整体的前向传播和反向传播，然后把每层计算得到的梯度计算进去，完成一次更新，这里注意每层在<code>Backward</code>中只是计<br>算dW和db，而W和b的更新是在Net的Update里最后一起更新的。而且在caffe里训练模型的时候一般会有两个<code>Net</code>，一个<code>train</code>一<br>个test。刚开始训练网络时前面的一大堆输出，网络的结构什么的也都是这里输出的。</p>
+<h3 id="Solver"><a href="#Solver" class="headerlink" title="Solver"></a>Solver</h3><p> Solver是按<code>solver.prototxt</code>的参数定义对Net进行训练，首先会初始化一个TrainNet和一个TestNet，然后其中的Step函数会<br>对网络不断进行迭代，主要就是两个步骤反复迭代：</p>
+<p>①不断利用ComputeUpdateValue计算迭代相关参数，比如计算learning rate，<br>把weight decay</p>
+<p>②调用Net的Update函数对整个网络进行更新。迭代中的一大堆输出也是在这里输出的，比如当前的loss<br>和learning rate。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
+          
+            <a href="/tags/Caffe/" rel="tag"># Caffe</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/04/2017-1-4tensorflow简介/" rel="next" title="tensorflow执行流程">
+                <i class="fa fa-chevron-left"></i> tensorflow执行流程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -322,8 +493,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="categories/index.html"
-           data-title="Categories" data-url="https://github.com/silverlining21/silverlining21.github.io/categories/index.html">
+      <div class="ds-thread" data-thread-key="2017/01/13/2017-1-4 caffe 层次结构/"
+           data-title="caffe 层次结构" data-url="https://github.com/silverlining21/silverlining21.github.io/2017/01/13/2017-1-4 caffe 层次结构/">
       </div>
     
   </div>
@@ -347,8 +518,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/freud.jpg"
@@ -447,6 +627,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Blob"><span class="nav-number">1.</span> <span class="nav-text">Blob</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Layer"><span class="nav-number">2.</span> <span class="nav-text">Layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Net"><span class="nav-number">3.</span> <span class="nav-text">Net</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solver"><span class="nav-number">4.</span> <span class="nav-text">Solver</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -552,6 +748,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
