@@ -410,18 +410,17 @@
         
           
             <p>Caffe从四个层次来理解：Blob，Layer,Net,Solver。</p>
-<h3 id="Blob"><a href="#Blob" class="headerlink" title="Blob"></a>Blob</h3><p>Caffe的基本数据结构，用四维矩阵<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Batch<span class="symbol">\*</span>Channel<span class="symbol">\*</span>Height<span class="symbol">\*</span>Width</div></pre></td></tr></table></figure></p>
-<p>表示，存储了包括神经元的<br>激活值、参数、以及相应的梯度<code>（dW,db）</code>。其中包含有<code>cpu_data、gpu_data、cpu_diff、gpu_diff、
-mutable_cpu_data、mutable_gpu_data、mutable_cpu_diff、mutable_gpu_diff</code>这一堆很像的东西，<br>分别表示存储在CPU和GPU上的数据（印象中二者的值好像是会自动同步成一致的）。其中带data的里面存<br>储的是激活值和<code>W、b</code>，diff中存储的是残差和<code>dW、db</code>。另外带<code>mutable</code>和不带<code>mutable</code>的一对指针所指<br>的位置是相同的，只是不带<code>mutable</code>的只读，而带<code>mutable</code>的可写。</p>
+<h3 id="Blob"><a href="#Blob" class="headerlink" title="Blob"></a>Blob</h3><p>Caffe的基本数据结构，用四维矩阵<code>Batch\*Channel\*Height\*Width</code>表示，存储了包括神经元的激活值、参数、以及相应的梯度<code>（dW,db）</code>。其中包含有<code>cpu_data、gpu_data、cpu_diff、gpu_diff、
+mutable_cpu_data、mutable_gpu_data、mutable_cpu_diff、mutable_gpu_diff</code>这一堆很像的东西，分别表示存储在CPU和GPU上的数据（印象中二者的值好像是会自动同步成一致的）。其中带data的里面存<br>储的是激活值和<code>W、b</code>，diff中存储的是残差和<code>dW、db</code>。另外带<code>mutable</code>和不带<code>mutable</code>的一对指针所指的位置是相同的，只是不带<code>mutable</code>的只读，而带<code>mutable</code>的可写。</p>
 <p><a href="http://imbinwang.github.io/blog/inside-caffe-code-blob" target="_blank" rel="external">for more details</a></p>
-<h3 id="Layer"><a href="#Layer" class="headerlink" title="Layer"></a>Layer</h3><p>代表神经网络的层，由各种各样的层来构成整个网络。一般一个图像或样本会从数据层中读进来，<br>然后一层一层的往后传。除了数据层比较特殊之外，其余大部分层都包含4个函数：<code>LayerSetUp、Reshape、
-Forward、Backward</code>。其中LayerSetup用于初始化层，开辟空间，填充初始值什么的。Reshape是对输入<br>值进行维度变换，比如pooling接全连接层的时候要先拉成一个向量再计算。Forward是前向传播，Backward是<br>后向传播。</p>
-<p>那么数据是如何在层之间传递的呢？每一层都会有一个（或多个）Bottom和top，分别存储输入和输出，<br>比如<code>bottom[0]-&gt;cpu_data()</code>存输入的神经元激活值，换成top存输出的，换成<code>cpu_diff()</code>存的是激活值的残差，<br>换成gpu是存在GPU上的数据，再带上<code>mutable</code>就可写了，这些是神经元激活值相关的，如果这个层前后有多个输入输出层，<br>就会有<code>bottom[1]</code>，比如<code>accuracy_layer</code>就有两个输入，fc8和label。而每层的参数会存在<code>this-&gt;blobs_</code>里，一般<code>this-&gt;blobs_[0]</code><br>存<code>W</code>，<code>this-&gt;blobs_[1]</code>存<code>b</code>，<code>this-&gt;blobs_[0]-&gt;cpu_data()</code>存的是W的值，<code>this-&gt;blobs_[0]-&gt;cpu_diff()</code>存的梯度dW，b和db也<br>类似，然后换成gpu是存在GPU上的数据，再带上mutable就可写了。</p>
+<h3 id="Layer"><a href="#Layer" class="headerlink" title="Layer"></a>Layer</h3><p>代表神经网络的层，由各种各样的层来构成整个网络。一般一个图像或样本会从数据层中读进来，然后一层一层的往后传。除了数据层比较特殊之外，其余大部分层都包含4个函数：<code>LayerSetUp、Reshape、
+Forward、Backward</code>。其中LayerSetup用于初始化层，开辟空间，填充初始值什么的。Reshape是对输入值进行维度变换，比如pooling接全连接层的时候要先拉成一个向量再计算。Forward是前向传播，Backward是<br>后向传播。</p>
+<p>那么数据是如何在层之间传递的呢？每一层都会有一个（或多个）Bottom和top，分别存储输入和输出，比如<code>bottom[0]-&gt;cpu_data()</code>存输入的神经元激活值，换成top存输出的，换成<code>cpu_diff()</code>存的是激活值的残差，<br>换成gpu是存在GPU上的数据，再带上<code>mutable</code>就可写了，这些是神经元激活值相关的，如果这个层前后有多个输入输出层，就会有<code>bottom[1]</code>，比如<code>accuracy_layer</code>就有两个输入，fc8和label。而每层的参数会存在<code>this-&gt;blobs_</code>里，一般<code>this-&gt;blobs_[0]</code>存<code>W</code>，<code>this-&gt;blobs_[1]</code>存<code>b</code>，<code>this-&gt;blobs_[0]-&gt;cpu_data()</code>存的是W的值，<code>this-&gt;blobs_[0]-&gt;cpu_diff()</code>存的梯度dW，b和db也类似，然后换成gpu是存在GPU上的数据，再带上mutable就可写了。</p>
 <p><a href="http://imbinwang.github.io/blog/inside-caffe-code-layer" target="_blank" rel="external">for more details</a></p>
-<h3 id="Net"><a href="#Net" class="headerlink" title="Net"></a>Net</h3><p> Net就是把各种层按train_val.prototxt的定义堆叠在一起，首先进行每个层的初始化，然后不断进行<code>Update</code>，每更新一次就<br>进行一次整体的前向传播和反向传播，然后把每层计算得到的梯度计算进去，完成一次更新，这里注意每层在<code>Backward</code>中只是计<br>算dW和db，而W和b的更新是在Net的Update里最后一起更新的。而且在caffe里训练模型的时候一般会有两个<code>Net</code>，一个<code>train</code>一<br>个test。刚开始训练网络时前面的一大堆输出，网络的结构什么的也都是这里输出的。</p>
-<h3 id="Solver"><a href="#Solver" class="headerlink" title="Solver"></a>Solver</h3><p> Solver是按<code>solver.prototxt</code>的参数定义对Net进行训练，首先会初始化一个TrainNet和一个TestNet，然后其中的Step函数会<br>对网络不断进行迭代，主要就是两个步骤反复迭代：</p>
-<p>①不断利用ComputeUpdateValue计算迭代相关参数，比如计算learning rate，<br>把weight decay</p>
-<p>②调用Net的Update函数对整个网络进行更新。迭代中的一大堆输出也是在这里输出的，比如当前的loss<br>和learning rate。</p>
+<h3 id="Net"><a href="#Net" class="headerlink" title="Net"></a>Net</h3><p> Net就是把各种层按train_val.prototxt的定义堆叠在一起，首先进行每个层的初始化，然后不断进行<code>Update</code>，每更新一次就进行一次整体的前向传播和反向传播，然后把每层计算得到的梯度计算进去，完成一次更新，这里注意每层在<code>Backward</code>中只是计算dW和db，而W和b的更新是在Net的Update里最后一起更新的。而且在caffe里训练模型的时候一般会有两个<code>Net</code>，一个<code>train</code>一个test。刚开始训练网络时前面的一大堆输出，网络的结构什么的也都是这里输出的。</p>
+<h3 id="Solver"><a href="#Solver" class="headerlink" title="Solver"></a>Solver</h3><p> Solver是按<code>solver.prototxt</code>的参数定义对Net进行训练，首先会初始化一个TrainNet和一个TestNet，然后其中的Step函数会对网络不断进行迭代，主要就是两个步骤反复迭代：</p>
+<p>①不断利用ComputeUpdateValue计算迭代相关参数，比如计算learning rate，把weight decay加上什么的</p>
+<p>②调用Net的Update函数对整个网络进行更新。迭代中的一大堆输出也是在这里输出的，比如当前的loss和learning rate什么的。</p>
 
           
         
